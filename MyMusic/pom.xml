@@ -45,6 +45,12 @@
 			<artifactId>sqlite-dialect</artifactId>
 			<version>1.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 				
 	</dependencies>
 
@@ -62,7 +68,15 @@
 						<configuration>
 							<classifier>spring-boot</classifier>
 							<mainClass>${fully.qualified.main.class}</mainClass>
+
+							<excludes>
+								<exclude>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+								</exclude>
+							</excludes>
 						</configuration>
+
 					</execution>
 				</executions>
 			</plugin>
