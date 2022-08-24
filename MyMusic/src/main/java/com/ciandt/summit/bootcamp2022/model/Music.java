@@ -5,12 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Music {
+@Entity(name = "Musicas")
+public class Music implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
+    @Column(name = "Nome")
     private String name;
+
+    @JoinColumn(name = "ArtistaId")
+    @ManyToOne
     private Artist artist;
 }
