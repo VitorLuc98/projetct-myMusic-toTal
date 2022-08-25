@@ -1,25 +1,25 @@
 package com.ciandt.summit.bootcamp2022.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 @Entity
+@Table(name = "Playlists")
 public class Playlist implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @ManyToMany( fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "PlaylistMusicas",
             joinColumns = {@JoinColumn(name = "PlaylistId")},
             inverseJoinColumns = {@JoinColumn(name = "MusicaId")})

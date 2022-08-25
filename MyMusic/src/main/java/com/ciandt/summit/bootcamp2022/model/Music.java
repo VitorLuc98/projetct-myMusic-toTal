@@ -1,17 +1,17 @@
 package com.ciandt.summit.bootcamp2022.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Musicas")
+@Setter
+@Getter
+@Entity
+@Table(name = "Musicas")
 public class Music implements Serializable {
 
     @Id
