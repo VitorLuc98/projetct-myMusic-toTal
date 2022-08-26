@@ -31,9 +31,6 @@ class MusicServiceImplTest {
     @Autowired
     MusicServiceImpl service;
 
-    @Mock
-    ModelMapper modelMapper;
-
     @MockBean
     MusicRepository repository;
 
