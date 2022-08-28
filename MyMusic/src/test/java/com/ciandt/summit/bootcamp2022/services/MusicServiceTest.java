@@ -1,32 +1,27 @@
-package com.ciandt.summit.bootcamp2022.service.impl;
+package com.ciandt.summit.bootcamp2022.services;
 
 import com.ciandt.summit.bootcamp2022.dto.ArtistDto;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.model.Artist;
 import com.ciandt.summit.bootcamp2022.model.Music;
-import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
-import com.ciandt.summit.bootcamp2022.service.exceptions.ListIsEmptyException;
-import com.ciandt.summit.bootcamp2022.service.exceptions.NameLenghtException;
+import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
+import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
+import com.ciandt.summit.bootcamp2022.services.impl.MusicServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class MusicServiceImplTest {
+class MusicServiceTest {
 
     @Autowired
     MusicServiceImpl service;
@@ -49,7 +44,7 @@ class MusicServiceImplTest {
     }
 
     @Test
-    void whenFindByMusicOrArtistParameterIsEmpty(){
+    void findByMusicOrArtistShouldReturnAllMusicsWhenParameterIsNull(){
         when(repository.findAll()).thenReturn(List.of(music));
 
         var musicResponse = service.findByMusicOrArtist(null);
@@ -61,7 +56,20 @@ class MusicServiceImplTest {
     }
 
     @Test
-    void whenFindByMusicOrArtistThrowNameLenghtException(){
+    void findByMusicOrArtistShouldReturnMusicsWhenParameterIsValid(){
+        var filtro = "Animus";
+        when(repository.findAllByNameMusicOrNameArtist(filtro)).thenReturn(List.of(music));
+
+        var musicResponse = service.findByMusicOrArtist(filtro);
+
+        assertNotNull(musicResponse);
+        assertEquals(1,musicResponse.size());
+        assertEquals(MusicDto.class,musicResponse.get(0).getClass());
+
+    }
+
+    @Test
+    void findByMusicOrArtistShouldThrowNameLenghtException(){
         var exception = assertThrows(
                 NameLenghtException.class, () -> service.findByMusicOrArtist("B"),
                 "Exception not found");
@@ -71,7 +79,7 @@ class MusicServiceImplTest {
     }
 
     @Test
-    void whenFindByMusicOrArtistThrowListIsEmptyException(){
+    void findByMusicOrArtistShouldThrowListIsEmptyException(){
         var exception = assertThrows(
                 ListIsEmptyException.class,() -> service.findByMusicOrArtist("JBK42"),
                 "Exception not found");

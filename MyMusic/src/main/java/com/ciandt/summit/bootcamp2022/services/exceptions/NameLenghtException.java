@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.service.exceptions;
+package com.ciandt.summit.bootcamp2022.services.exceptions;
 
 public class NameLenghtException extends RuntimeException {
     public NameLenghtException() {

@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.repository;
+package com.ciandt.summit.bootcamp2022.repositories;
 
 import com.ciandt.summit.bootcamp2022.model.Music;
 import org.springframework.data.jpa.repository.JpaRepository;

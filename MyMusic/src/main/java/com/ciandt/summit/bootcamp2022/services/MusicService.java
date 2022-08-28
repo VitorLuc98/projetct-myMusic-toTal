@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.service;
+package com.ciandt.summit.bootcamp2022.services;
 
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 

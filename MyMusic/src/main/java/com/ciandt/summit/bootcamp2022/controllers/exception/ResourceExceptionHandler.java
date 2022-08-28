@@ -1,6 +1,6 @@
-package com.ciandt.summit.bootcamp2022.controller.exception;
+package com.ciandt.summit.bootcamp2022.controllers.exception;
 
-import com.ciandt.summit.bootcamp2022.service.exceptions.NameLenghtException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,11 +1,10 @@
-package com.ciandt.summit.bootcamp2022.service.impl;
+package com.ciandt.summit.bootcamp2022.services.impl;
 
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
-import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
-import com.ciandt.summit.bootcamp2022.service.MusicService;
-import com.ciandt.summit.bootcamp2022.service.exceptions.ListIsEmptyException;
-import com.ciandt.summit.bootcamp2022.service.exceptions.NameLenghtException;
-import lombok.AllArgsConstructor;
+import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
+import com.ciandt.summit.bootcamp2022.services.MusicService;
+import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

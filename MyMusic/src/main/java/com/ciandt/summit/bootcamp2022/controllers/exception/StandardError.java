@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.controller.exception;
+package com.ciandt.summit.bootcamp2022.controllers.exception;
 
 import lombok.*;
 
