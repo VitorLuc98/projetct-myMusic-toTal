@@ -1,5 +1,6 @@
 package com.ciandt.summit.bootcamp2022.services.impl;
 
+import com.ciandt.summit.bootcamp2022.dto.ArtistDto;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
 import com.ciandt.summit.bootcamp2022.services.MusicService;
@@ -7,8 +8,10 @@ import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +30,7 @@ public class MusicServiceImpl implements MusicService {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable("musics")
     public List<MusicDto> findByMusicOrArtist(String name) {
         if (Objects.isNull(name) || name.isEmpty()) {
             log.info("name is null or is empty");
