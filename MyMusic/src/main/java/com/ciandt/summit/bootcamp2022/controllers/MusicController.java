@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import java.util.List;
 @RequestMapping("api/musicas")
 @RequiredArgsConstructor
 public class MusicController {
+    private Logger log = LoggerFactory.getLogger(MusicController.class);
     private final MusicService service;
 
     @ApiOperation(value = "Returns a list of music by filter")
@@ -30,8 +33,9 @@ public class MusicController {
     })
     @GetMapping
     public ResponseEntity<List<MusicDto>> findByNameOrMusic(@RequestParam(required = false) String filtro){
-        return ResponseEntity.ok(service.findByMusicOrArtist(filtro));
+        log.info("Searching musics list");
+        var musics = service.findByMusicOrArtist(filtro);
+        log.info("Returning the musics list");
+        return ResponseEntity.ok(musics);
     }
-
-
 }
