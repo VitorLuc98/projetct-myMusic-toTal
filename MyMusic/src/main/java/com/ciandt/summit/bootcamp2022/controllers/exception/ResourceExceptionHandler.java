@@ -13,14 +13,14 @@ import java.time.LocalDateTime;
 public class ResourceExceptionHandler {
 
     @ExceptionHandler(NameLenghtException.class)
-    public ResponseEntity<StandardError> exceptionInvalidName(NameLenghtException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionInvalidName(HttpServletRequest request) {
 
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         StandardError standardError = new StandardError();
         standardError.setTimestamp(LocalDateTime.now());
         standardError.setStatus(status.value());
-        standardError.setError(e.getMessage());
+        standardError.setError("The name should have more than 2 characters");
         standardError.setPath(request.getRequestURI());
 
         return ResponseEntity.status(status).body(standardError);
