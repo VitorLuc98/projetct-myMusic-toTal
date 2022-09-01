@@ -5,6 +5,7 @@ import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
 import com.ciandt.summit.bootcamp2022.model.Music;
 import com.ciandt.summit.bootcamp2022.model.Playlist;
 import com.ciandt.summit.bootcamp2022.repositories.PlayListRepository;
+import com.ciandt.summit.bootcamp2022.repositories.PlaylistRepository;
 import com.ciandt.summit.bootcamp2022.services.PlayListService;
 import com.ciandt.summit.bootcamp2022.services.exceptions.EntityNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,11 +19,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @RequiredArgsConstructor
 public class PlayListServiceImpl implements PlayListService {
 
-    private PlayListRepository playListRepository;
+    private PlaylistRepository playListRepository;
     private MusicServiceImpl musicService;
     private ModelMapper modelMapper;
-
-
 
     public PlaylistDto getPlaylistById(String id) {
 
