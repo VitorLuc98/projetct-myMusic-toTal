@@ -3,6 +3,7 @@ package com.ciandt.summit.bootcamp2022.services.impl;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
 import com.ciandt.summit.bootcamp2022.services.MusicService;
+import com.ciandt.summit.bootcamp2022.services.exceptions.EntityNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,15 @@ public class MusicServiceImpl implements MusicService {
         return list.stream()
                 .map(music -> modelMapper.map(music,MusicDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public MusicDto getMusicById(String id) {
+        var musicEntity = repository.findById(id);
+        if (musicEntity.isEmpty()){
+            throw new EntityNotFoundException();
+        }
+        return  modelMapper.map(musicEntity.get(), MusicDto.class);
     }
 
     private List<MusicDto> findAll() {
