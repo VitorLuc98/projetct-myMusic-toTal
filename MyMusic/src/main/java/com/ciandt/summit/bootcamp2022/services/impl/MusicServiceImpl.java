@@ -1,21 +1,18 @@
 package com.ciandt.summit.bootcamp2022.services.impl;
 
-import com.ciandt.summit.bootcamp2022.dto.ArtistDto;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
 import com.ciandt.summit.bootcamp2022.services.MusicService;
-import com.ciandt.summit.bootcamp2022.services.exceptions.EntityNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.cache.annotation.Cacheable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 import java.util.Objects;
@@ -25,9 +22,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MusicServiceImpl implements MusicService {
 
-    private Logger log = LoggerFactory.getLogger(MusicService.class);
     private final MusicRepository repository;
     private final ModelMapper modelMapper;
+
+    private static final Logger log = LoggerFactory.getLogger(MusicServiceImpl.class);
 
     @Override
     @Transactional(readOnly = true)
@@ -56,10 +54,13 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public MusicDto getMusicById(String id) {
+        log.info("searching music by id = {}", id);
         var musicEntity = repository.findById(id);
         if (musicEntity.isEmpty()){
-            throw new EntityNotFoundException();
+            log.warn("Music of id {}, not found!", id);
+            throw new ResourceNotFoundException("Music not found!");
         }
         return  modelMapper.map(musicEntity.get(), MusicDto.class);
     }
