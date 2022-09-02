@@ -1,8 +1,10 @@
 package com.ciandt.summit.bootcamp2022.controllers.exception;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -11,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 public class StandardError implements Serializable {
 
-   private LocalDateTime timestamp;
+   private String timestamp;
    private Integer status;
    private String error;
    private String path;

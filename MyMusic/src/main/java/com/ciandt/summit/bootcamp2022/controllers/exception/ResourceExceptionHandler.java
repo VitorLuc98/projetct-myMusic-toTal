@@ -22,7 +22,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         StandardError standardError = new StandardError();
-        standardError.setTimestamp(LocalDateTime.now());
+        standardError.setTimestamp(LocalDateTime.now().toString());
         standardError.setStatus(status.value());
         standardError.setError("The name should have more than 2 characters");
         standardError.setPath(request.getRequestURI());
@@ -35,7 +35,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         StandardError standardError = new StandardError();
-        standardError.setTimestamp(LocalDateTime.now());
+        standardError.setTimestamp(LocalDateTime.now().toString());
         standardError.setStatus(status.value());
         standardError.setError(e.getMessage());
         standardError.setPath(request.getRequestURI());
@@ -49,7 +49,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.UNAUTHORIZED;
 
         StandardError standardError = new StandardError();
-        standardError.setTimestamp(LocalDateTime.now());
+        standardError.setTimestamp(LocalDateTime.now().toString());
         standardError.setStatus(status.value());
         standardError.setError("Unauthorized! Invalid credentials!");
         standardError.setPath(request.getRequestURI());
@@ -62,7 +62,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         StandardError standardError = new StandardError();
-        standardError.setTimestamp(LocalDateTime.now());
+        standardError.setTimestamp(LocalDateTime.now().toString());
         standardError.setStatus(status.value());
         standardError.setError(e.getMessage());
         standardError.setPath(request.getRequestURI());
@@ -76,7 +76,7 @@ public class ResourceExceptionHandler {
 
         ValidationError err = new ValidationError();
 
-        err.setTimestamp(LocalDateTime.now());
+        err.setTimestamp(LocalDateTime.now().toString());
         err.setStatus(status.value());
         err.setError("Validation Error");
         err.setPath(request.getRequestURI());

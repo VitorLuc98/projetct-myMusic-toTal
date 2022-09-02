@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("api/playlists")
 @RequiredArgsConstructor
@@ -30,7 +32,7 @@ public class PlaylistController {
             @ApiResponse(code = 500, message = "Unexpected Exception")
     })
     @PostMapping("{playlistId}/musicas")
-    public ResponseEntity<PlaylistDto> addMusicInPlaylist(@PathVariable("playlistId") String playlistId, @RequestBody MusicDto music){
+    public ResponseEntity<PlaylistDto> addMusicInPlaylist(@PathVariable("playlistId") String playlistId, @Valid @RequestBody MusicDto music){
         log.info("Adding Music to Playlist");
         var playlist = service.addMusicToPlaylist(playlistId, music);
         log.info("the song has been added to the playlist");
