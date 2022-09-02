@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class ArtistDto {
 
+    @NotBlank(message = "field 'id' is necessary")
     private String id;
 
     @NotBlank(message = "field 'name' is necessary")

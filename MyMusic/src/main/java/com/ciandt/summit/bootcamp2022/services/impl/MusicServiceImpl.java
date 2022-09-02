@@ -1,13 +1,16 @@
 package com.ciandt.summit.bootcamp2022.services.impl;
 
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
+import com.ciandt.summit.bootcamp2022.model.Music;
 import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
 import com.ciandt.summit.bootcamp2022.services.MusicService;
-import com.ciandt.summit.bootcamp2022.services.exceptions.EntityNotFoundException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +25,8 @@ public class MusicServiceImpl implements MusicService {
 
     private final MusicRepository repository;
     private final ModelMapper modelMapper;
+
+    private static final Logger log = LoggerFactory.getLogger(MusicServiceImpl.class);
 
     @Override
     @Transactional(readOnly = true)
@@ -45,10 +50,13 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public MusicDto getMusicById(String id) {
+        log.info("searching music by id = {}", id);
         var musicEntity = repository.findById(id);
         if (musicEntity.isEmpty()){
-            throw new EntityNotFoundException();
+            log.warn("Music of id {}, not found!", id);
+            throw new ResourceNotFoundException("Music not found!");
         }
         return  modelMapper.map(musicEntity.get(), MusicDto.class);
     }

@@ -1,17 +1,17 @@
 package com.ciandt.summit.bootcamp2022.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class MusicDto {
 
+    @NotBlank(message = "field 'id' is necessary")
     private String id;
 
     @NotBlank(message = "field 'name' is necessary")

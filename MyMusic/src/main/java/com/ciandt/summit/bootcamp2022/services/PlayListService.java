@@ -2,8 +2,11 @@ package com.ciandt.summit.bootcamp2022.services;
 
 
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
+import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
 
 public interface PlayListService {
-    public void saveMusicInPlaylist(MusicDto musicDto, String playlistId);
+
+    PlaylistDto getPlaylistById(String id);
+     PlaylistDto addMusicToPlaylist(String playlistId, MusicDto musicDto);
 }
 
