@@ -4,12 +4,14 @@ import com.ciandt.summit.bootcamp2022.config.interceptor.TokenInterceptor;
 import com.ciandt.summit.bootcamp2022.dto.ArtistDto;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
+import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.impl.PlayListServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -50,11 +52,14 @@ class PlaylistControllerTest {
     private MusicDto music1;
     private ArtistDto artist1;
     private PlaylistDto playlist;
+    private String uri;
 
     @BeforeEach
     void setUp() throws Exception {
         given(tokenInterceptor.preHandle(any(), any(), any())).willReturn(true);
         MockitoAnnotations.openMocks(this);
+
+        uri = "/api/playlists/1/musicas";
 
         artist1 = new ArtistDto("1", "Led zeppelin ");
         music1 = new MusicDto("1", "When the levee breaks", artist1);
@@ -63,27 +68,43 @@ class PlaylistControllerTest {
 
     @Test
     void addMusicInPlaylistShouldAddMusicToThePlaylist() throws Exception {
-        when(service.addMusicToPlaylist("1",music1)).thenReturn(playlist);
+        when(service.addMusicToPlaylist(Mockito.anyString(), any(MusicDto.class))).thenReturn(playlist);
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .post("/api/playlists/1/musicas")
+                        .post(uri)
                         .content(asJsonString(music1))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$").isNotEmpty());
+                .andExpect(jsonPath("$").isNotEmpty())
+                .andExpect(jsonPath("$.id", is("1")));
     }
 
     @Test
-    void addMusicInPlaylistIDDontexist() throws Exception {
-        when(service.addMusicToPlaylist("1",music1)).thenReturn(playlist);
+    void addMusicInPlaylistWhenIdDoesntExist() throws Exception {
+        when(service.addMusicToPlaylist(Mockito.anyString(), any(MusicDto.class))).thenThrow(new ResourceNotFoundException("PlayList Not Found!"));
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .post("/api/playlists/1/musicas")
+                        .post(uri)
                         .content(asJsonString(music1))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("PlayList Not Found!")));
+
+    }
+
+    @Test
+    void addMusicInPlaylistWhenIdMusicDoenstExist() throws Exception {
+        when(service.addMusicToPlaylist(Mockito.anyString(), any(MusicDto.class))).thenThrow(new ResourceNotFoundException("Music not found!"));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post(uri)
+                        .content(asJsonString(music1))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("Music not found!")));
     }
 
     public static String asJsonString(final Object obj) {
