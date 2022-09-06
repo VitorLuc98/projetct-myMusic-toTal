@@ -1,8 +1,7 @@
 # <p align="center"> My Music 2022 </p>
 ## <p align="center"> IT Music </p>
 
-![giphy](https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif) 
- 
+![giphy](https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif)  
 
  
 * [Sobre](#sobre-o-projeto)
@@ -18,10 +17,9 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 
 # Principais Funcionalidades
 - [x] Permite o usuário buscar novas músicas
-- [x] A busca é feita através do nome da múscia ou nome do Artista, e o usuário deverá informar pelo menos 3 caracteres, caso contrário, ocorrerá um erro HTTP 400.
+- [x] A busca é feita através do nome da múscia ou nome do Artista.
+- [x] Ao realizar a busca de novas músicas, o usuário deverá informar pelo menos 3 caracteres, caso contrário, ocorrerá um erro HTTP 400.
 - [x] Permite o usuário adicionar novas músicas na playList
-- [x] Deve receber um request contendo o identificador da música e o identificador da playlist.
-- [x] Deve validar se o identificador da música e o identificador da playlist existem.
 - [x] Permite o usuário remover uma música da sua playList
 - [x] Possuímos dois tipos de usuáros: Premium e comum.
 
@@ -29,17 +27,18 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 Utilizamos o Monolítico
 
 # Tecnologias e ferramentas utilizadas
-Java 11
-Spring Boot
-Maven;
-Spring Boot Actuator;
-JPA/ Hibernate
-SQLIte
-Swagger
-Mockito
-Postman
-Intellij IDEA;
-Git & GitHub;
+* [Java 11](https://www.oracle.com/java/technologies/downloads/)
+* [Spring Boot](https://start.spring.io/)
+* [Maven](https://mvnrepository.com/)
+* [Spring Boot Actuator](https://mvnrepository.com/)
+* [JPA/ Hibernate](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
+* [SQLIte](https://www.sqlite.org/index.html)
+* [Swagger](https://swagger.io/)
+* [Mockito](https://site.mockito.org/)
+* [Postman](https://www.postman.com/)
+* [Intellij IDEA](https://www.jetbrains.com/idea/)
+* [Git](https://git-scm.com/)
+* [GitHub](https://github.com/)
 
 # Token-provider
 
