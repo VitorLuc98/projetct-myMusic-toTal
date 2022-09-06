@@ -1,18 +1,24 @@
 package com.ciandt.summit.bootcamp2022.config.interceptor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Component
-public class WebConfiguration extends WebMvcConfigurationSupport {
+public class WebConfiguration implements WebMvcConfigurer {
 
+    @Autowired
+    private TokenInterceptor interceptor;
     @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TokenInterceptor())
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(interceptor)
                 .excludePathPatterns(
-                        "/api/musicas/**",
                         "/swagger-ui.html",
-                        "/swagger-ui/**");
+                        "/swagger-ui/**",
+                        "/v2/api-docs/**",
+                        "/swagger-resources/**",
+                        "/webjars/**",
+                        "/configuration/security");
     }
 }
