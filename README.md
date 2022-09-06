@@ -1,11 +1,14 @@
-# My Music 2022
-![giphy](https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif)
+# <p align="center"> My Music 2022 </p>
+## <p align="center"> IT Music </p>
+
+![giphy](https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif) 
+ 
   
 * [Sobre](#sobre-o-projeto)
-* [Principais Funcionalidades](#Principais-Funcionalidades)
-* [Arquiteura](#Arquitetura)
-* [Tecnologias e ferramentas utilizadas](#Tecnologias-e-ferramentas utilizadas)
-* [Token-provider](#Token-provider)
+* [Principais Funcionalidades](#principais-funcionalidades)
+* [Arquiteura](#arquitetura)
+* [Tecnologias e ferramentas utilizadas](#tecnologias-e-ferramentas-utilizadas)
+* [Token-provider](#token-provider)
 
 # Sobre o Projeto
 
