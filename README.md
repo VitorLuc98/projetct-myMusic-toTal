@@ -1,9 +1,8 @@
-# <p align="center"> My Music 2022 </p>
-## <p align="center"> IT Music </p>
+# <p align="center">🎵 My Music 2022 </p>
+## <p align="center"> 🎶 IT Music  </p>
 
 ![giphy](https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif)  
 
- 
 * [Sobre](#sobre-o-projeto)
 * [Principais Funcionalidades](#principais-funcionalidades)
 * [Arquiteura](#arquitetura)
@@ -27,12 +26,18 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 Utilizamos o Monolítico
 
 # Tecnologias e ferramentas utilizadas
-* [Java 11](https://www.oracle.com/java/technologies/downloads/)
-* [Spring Boot](https://start.spring.io/)
+
+* [![Java 11](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+](https://www.oracle.com/java/technologies/downloads/)
+* [![Spring Boot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+](https://start.spring.io/)
+* [![SQLITE](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+](https://www.sqlite.org/index.html)
+
+ 
 * [Maven](https://mvnrepository.com/)
 * [Spring Boot Actuator](https://mvnrepository.com/)
 * [JPA/ Hibernate](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
-* [SQLIte](https://www.sqlite.org/index.html)
 * [Swagger](https://swagger.io/)
 * [Mockito](https://site.mockito.org/)
 * [Postman](https://www.postman.com/)
