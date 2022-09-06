@@ -32,7 +32,7 @@ public class PlayListServiceImpl implements PlayListService {
     public PlaylistDto getPlaylistById(String id) {
         log.info("searching playlist by id = {}", id);
         var playlistEntity = playListRepository.findById(id);
-        if (playlistEntity.isEmpty()){
+        if (playlistEntity.isEmpty()) {
             log.warn("Playlist of id {}, not found!", id);
             throw new ResourceNotFoundException("PlayList Not Found!");
         }
@@ -57,27 +57,24 @@ public class PlayListServiceImpl implements PlayListService {
     }
 
     @Override
-    public PlaylistDto removeMusicFromPlaylist(String playlistId, String musicId) {
+    public void removeMusicFromPlaylist(String playlistId, String musicId) {
         Music music = modelMapper.map(musicService.getMusicById(musicId), Music.class);
         Playlist playlist = modelMapper.map(getPlaylistById(playlistId), Playlist.class);
 
-        if (playlist.getMusics().stream().noneMatch(m -> m.getId().equals(music.getId()))){
+        if (playlist.getMusics().stream().noneMatch(m -> m.getId().equals(music.getId()))) {
             throw new MusicNotExistInPlaylistException("Music does not exist in the playlist!");
         }
 
         playlist.getMusics().removeIf(m -> m.getId().equals(musicId));
-
-        playlist = playListRepository.save(playlist);
-
-        return modelMapper.map(playlist, PlaylistDto.class);
+        playListRepository.save(playlist);
     }
 
-    private void checksMusicExistsInPlaylist(Playlist playlist, Music music){
+    private void checksMusicExistsInPlaylist(Playlist playlist, Music music) {
         var isMusicExist = playlist.getMusics().stream()
                 .anyMatch(m -> m.getId().equals(music.getId()) &&
                         m.getArtist().getId().equals(music.getArtist().getId()));
 
-        if (isMusicExist){
+        if (isMusicExist) {
             log.warn("The music already exists in the playlist");
             throw new MusicExistInPlaylistException("Music already exists in the playlist!");
         }
