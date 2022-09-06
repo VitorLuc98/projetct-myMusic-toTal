@@ -5,11 +5,14 @@
  <img src ="https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif">  
 </p>
  
-* [Sobre](#sobre-o-projeto)
-* [Principais Funcionalidades](#principais-funcionalidades)
-* [Arquiteura](#arquitetura)
-* [Tecnologias e ferramentas utilizadas](#tecnologias-e-ferramentas-utilizadas)
-* [Token-provider](#token-provider)
+ <p align="center">
+ <a href="#sobre-o-projeto">Sobre<a/> .
+ <a href="#principais-funcionalidades">Principais Funcionalidades<a/> .
+ <a href="#arquitetura">Arquiteura<a/> .
+ <a href="#tecnologias-e-ferramentas-utilizadas">Tecnologias e ferramentas utilizadas<a/> .
+ <a href="#token-provider">Token-provider<a/>
+  </p>
+  
  
 
 # Sobre o Projeto
