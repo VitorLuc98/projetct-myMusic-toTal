@@ -32,10 +32,17 @@ public class PlaylistController {
             @ApiResponse(code = 500, message = "Unexpected Exception")
     })
     @PostMapping("{playlistId}/musicas")
-    public ResponseEntity<PlaylistDto> addMusicInPlaylist(@PathVariable("playlistId") String playlistId, @Valid @RequestBody MusicDto music){
+    public ResponseEntity<PlaylistDto> addMusicInPlaylist(@PathVariable("playlistId") String playlistId, @Valid @RequestBody MusicDto music) {
         log.info("Adding Music to Playlist");
         var playlist = service.addMusicToPlaylist(playlistId, music);
         log.info("the song has been added to the playlist");
         return new ResponseEntity<>(playlist, HttpStatus.CREATED);
     }
+
+    @PutMapping("{playlistId}/musicas/{musicId}")
+    public ResponseEntity<Void> removeMusicInPlaylist(@PathVariable("playlistId") String playlistId, @PathVariable("musicId") String musicId) {
+        service.removeMusicFromPlaylist(playlistId, musicId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
