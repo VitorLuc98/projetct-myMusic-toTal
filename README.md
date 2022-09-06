@@ -27,17 +27,18 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 Utilizamos o Monolítico
 
 # Tecnologias e ferramentas utilizadas
-Java 11
-Spring Boot
-Maven;
-Spring Boot Actuator;
-JPA/ Hibernate
-SQLIte
-Swagger
-Mockito
-Postman
-Intellij IDEA;
-Git & GitHub;
+* [Java 11](https://www.oracle.com/java/technologies/downloads/)
+* [Spring Boot](https://start.spring.io/)
+* [Maven](https://mvnrepository.com/)
+* [Spring Boot Actuator](https://mvnrepository.com/)
+* [JPA/ Hibernate](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
+* [SQLIte](https://www.sqlite.org/index.html)
+* [Swagger](https://swagger.io/)
+* [Mockito](https://site.mockito.org/)
+* [Postman](https://www.postman.com/)
+* [Intellij IDEA](https://www.jetbrains.com/idea/)
+* [Git](https://git-scm.com/)
+* [GitHub](https://github.com/)
 
 # Token-provider
 
