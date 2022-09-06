@@ -1,9 +1,11 @@
 # My Music 2022
 ![giphy](https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif)
-
-* [Sobre o Projeto](#Sobre-o-Projeto)
+  
+* [Sobre](#sobre-o-projeto)
 * [Principais Funcionalidades](#Principais-Funcionalidades)
-
+* [Arquiteura](#Arquitetura)
+* [Tecnologias e ferramentas utilizadas](#Tecnologias-e-ferramentas utilizadas)
+* [Token-provider](#Token-provider)
 
 # Sobre o Projeto
 
