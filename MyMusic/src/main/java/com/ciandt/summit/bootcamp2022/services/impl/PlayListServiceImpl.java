@@ -9,6 +9,7 @@ import com.ciandt.summit.bootcamp2022.repositories.PlaylistRepository;
 import com.ciandt.summit.bootcamp2022.services.MusicService;
 import com.ciandt.summit.bootcamp2022.services.PlayListService;
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicExistInPlaylistException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -50,6 +51,22 @@ public class PlayListServiceImpl implements PlayListService {
         playlist.getMusics().add(music);
 
         log.info("saving the playlist");
+        playlist = playListRepository.save(playlist);
+
+        return modelMapper.map(playlist, PlaylistDto.class);
+    }
+
+    @Override
+    public PlaylistDto removeMusicFromPlaylist(String playlistId, String musicId) {
+        Music music = modelMapper.map(musicService.getMusicById(musicId), Music.class);
+        Playlist playlist = modelMapper.map(getPlaylistById(playlistId), Playlist.class);
+
+        if (playlist.getMusics().stream().noneMatch(m -> m.getId().equals(music.getId()))){
+            throw new MusicNotExistInPlaylistException("Music does not exist in the playlist!");
+        }
+
+        playlist.getMusics().removeIf(m -> m.getId().equals(musicId));
+
         playlist = playListRepository.save(playlist);
 
         return modelMapper.map(playlist, PlaylistDto.class);
