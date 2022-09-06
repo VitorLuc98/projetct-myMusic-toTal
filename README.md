@@ -1,7 +1,7 @@
 # <p align="center">🎵 My Music 2022 </p>
 ## <p align="center"> 🎶 IT Music  </p>
 
-![giphy](https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif)  
+<img src ="https://user-images.githubusercontent.com/108950241/188672723-ec8257ac-a77e-44c1-9e64-aaa2de4d75d5.gif">  
 
 * [Sobre](#sobre-o-projeto)
 * [Principais Funcionalidades](#principais-funcionalidades)
