@@ -8,6 +8,6 @@ public interface PlayListService {
 
     PlaylistDto getPlaylistById(String id);
      PlaylistDto addMusicToPlaylist(String playlistId, MusicDto musicDto);
-     PlaylistDto removeMusicFromPlaylist(String playlistId, String musicaId);
+     void removeMusicFromPlaylist(String playlistId, String musicaId);
 }
 
