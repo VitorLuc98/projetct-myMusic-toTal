@@ -23,7 +23,7 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 - [x] Possuímos dois tipos de usuáros: Premium e comum.
 
 # Arquitetura
-Utilizamos o Monolítico
+Utilizamos a arquitetura MVC.
 
 # Tecnologias e ferramentas utilizadas
 
