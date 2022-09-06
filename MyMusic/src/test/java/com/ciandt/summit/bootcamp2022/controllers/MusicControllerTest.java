@@ -1,5 +1,6 @@
 package com.ciandt.summit.bootcamp2022.controllers;
 
+import com.ciandt.summit.bootcamp2022.config.interceptor.TokenInterceptor;
 import com.ciandt.summit.bootcamp2022.dto.ArtistDto;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
@@ -7,12 +8,16 @@ import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import com.ciandt.summit.bootcamp2022.services.impl.MusicServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -23,12 +28,15 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(MusicController.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MusicControllerTest {
 
     @Autowired
@@ -40,6 +48,9 @@ public class MusicControllerTest {
     @Autowired
     private MusicController controller;
 
+    @MockBean
+    TokenInterceptor tokenInterceptor;
+
     private ArtistDto artist1;
     private MusicDto music1;
     private ArtistDto artist2;
@@ -49,6 +60,7 @@ public class MusicControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
+        given(tokenInterceptor.preHandle(any(), any(), any())).willReturn(true);
         MockitoAnnotations.openMocks(this);
 
         artist1 = new ArtistDto("1", "Post Malone");
