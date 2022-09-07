@@ -23,13 +23,12 @@ public class PlaylistController {
     private Logger log = LoggerFactory.getLogger(PlaylistController.class);
     private final PlayListService service;
 
-    @ApiOperation(value = "Return playlist by playlistId")
+    @ApiOperation(value = "Add a new music to the playlist")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Returns the list"),
-            @ApiResponse(code = 400, message = "Music does not exist in the database"),
-            @ApiResponse(code = 400, message = "Playlist does not exist in the database"),
-            @ApiResponse(code = 400, message = "Payload body does not conform to documentation"),
-            @ApiResponse(code = 500, message = "Unexpected Exception")
+            @ApiResponse(code = 201, message = "Return to playlist with added music"),
+            @ApiResponse(code = 400, message = "Music or Playlist does not exist in the database, or Music already exists in the playlist, " +
+                    "or Request body not populating correctly"),
+            @ApiResponse(code = 401, message = "No permission to access this feature")
     })
     @PostMapping("{playlistId}/musicas")
     public ResponseEntity<PlaylistDto> addMusicInPlaylist(@PathVariable("playlistId") String playlistId, @Valid @RequestBody MusicDto music) {
@@ -39,6 +38,12 @@ public class PlaylistController {
         return new ResponseEntity<>(playlist, HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "Remove a music from the playlist")
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Music successfully removed"),
+            @ApiResponse(code = 400, message = "Music or Playlist does not exist in database, or Music does not exist in playlist"),
+            @ApiResponse(code = 401, message = "No permission to access this feature")
+    })
     @PutMapping("{playlistId}/musicas/{musicId}")
     public ResponseEntity<Void> removeMusicInPlaylist(@PathVariable("playlistId") String playlistId, @PathVariable("musicId") String musicId) {
         service.removeMusicFromPlaylist(playlistId, musicId);
