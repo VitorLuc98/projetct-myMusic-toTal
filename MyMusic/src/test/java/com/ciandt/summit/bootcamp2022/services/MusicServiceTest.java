@@ -7,6 +7,7 @@ import com.ciandt.summit.bootcamp2022.model.Music;
 import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.impl.MusicServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,8 +17,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -31,16 +34,16 @@ class MusicServiceTest {
 
     Music music;
     MusicDto musicDTO;
+    Optional<Music> optionalMusic;
 
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        music = new Music("1","Animus", new Artist("2","Monuments"));
-
-        musicDTO = new MusicDto("1","Animus", new ArtistDto("2","Monuments"));
-
+        music = new Music("1", "Animus", new Artist("2", "Monuments"));
+        musicDTO = new MusicDto("1", "Animus", new ArtistDto("2", "Monuments"));
+        optionalMusic = Optional.of(music);
     }
 
     @Test
@@ -52,7 +55,6 @@ class MusicServiceTest {
         assertNotNull(musicResponse);
         assertEquals(1,musicResponse.size());
         assertEquals(MusicDto.class,musicResponse.get(0).getClass());
-
     }
 
     @Test
@@ -65,7 +67,6 @@ class MusicServiceTest {
         assertNotNull(musicResponse);
         assertEquals(1,musicResponse.size());
         assertEquals(MusicDto.class,musicResponse.get(0).getClass());
-
     }
 
     @Test
@@ -86,7 +87,26 @@ class MusicServiceTest {
 
         assertEquals("Couldn't find any artist or song with the given name",exception.getMessage());
         assertEquals(ListIsEmptyException.class,exception.getClass());
-
     }
 
+    @Test
+    void getMusicByIdShouldReturnAMusicDto(){
+        when(repository.findById(anyString())).thenReturn(optionalMusic);
+
+        var response = service.getMusicById("1");
+
+        assertNotNull(response);
+        assertEquals(optionalMusic.get().getId(),response.getId());
+        assertEquals(MusicDto.class,response.getClass());
+    }
+
+    @Test
+    void getMusicByIdShouldReturnResourceNotFoundException(){
+        var exception = assertThrows(
+                ResourceNotFoundException.class,() -> service.getMusicById(null),
+                "Exception not found");
+
+        assertEquals("Music not found!",exception.getMessage());
+        assertEquals(ResourceNotFoundException.class,exception.getClass());
+    }
 }
