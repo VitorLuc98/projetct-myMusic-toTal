@@ -10,7 +10,7 @@
  <a href="#principais-funcionalidades">Principais Funcionalidades<a/> .
  <a href="#arquitetura">Arquiteura<a/> .
  <a href="#tecnologias-e-ferramentas-utilizadas">Tecnologias e ferramentas utilizadas<a/> .
- <a href="#token-provider">Token-provider<a/>
+ <a href="#colaboradores">Colaboradores<a/>
   </p>
   
  
@@ -52,5 +52,7 @@ Utilizamos a arquitetura MVC.
 * [Git](https://git-scm.com/)
 * [GitHub](https://github.com/)
 
-# Token-provider
-
+# Colaboradores
+Project Link: 
+https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
+<a href="https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop">
