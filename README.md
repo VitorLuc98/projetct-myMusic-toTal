@@ -24,7 +24,7 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 - [x] A busca é feita através do nome da múscia ou nome do Artista.
 - [x] Ao realizar a busca de novas músicas, o usuário deverá informar pelo menos 3 caracteres, caso contrário, ocorrerá um erro HTTP 400.
 - [x] Permite o usuário adicionar novas músicas na playList
-- [x] Permite o usuário remover uma música da sua playList
+- [x] Permite o usuário remover uma ou mais música da sua playList
 - [x] Possuímos dois tipos de usuáros: Premium e comum.
 
 # Arquitetura
