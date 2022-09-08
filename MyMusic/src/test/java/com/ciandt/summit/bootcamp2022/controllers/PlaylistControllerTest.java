@@ -4,6 +4,7 @@ import com.ciandt.summit.bootcamp2022.config.interceptor.TokenInterceptor;
 import com.ciandt.summit.bootcamp2022.dto.ArtistDto;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
+import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.impl.PlayListServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +29,7 @@ import java.util.Arrays;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -105,6 +106,32 @@ class PlaylistControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error", is("Music not found!")));
+    }
+
+
+    @Test
+    void removeMusicFromPlaylistShouldDeleteMusicFromThePlaylist() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders
+                        .put("/api/playlists/1/musicas/1")
+                        .content(asJsonString(playlist))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
+
+        verify(service,times(1)).removeMusicFromPlaylist("1","1");
+    }
+    @Test
+    void removeMusicFromPlaylistWhenMusicDontExistInThePlaylist() throws Exception{
+        doThrow(new MusicNotExistInPlaylistException("Music does not exist in the playlist!"))
+                .when(service).removeMusicFromPlaylist(Mockito.anyString(),Mockito.anyString());
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .put("/api/playlists/1/musicas/1")
+                        .content(asJsonString(playlist))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("Music does not exist in the playlist!")));
     }
 
     public static String asJsonString(final Object obj) {
