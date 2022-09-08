@@ -23,7 +23,7 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("TokenInterceptor - Pre Handle initialized");
+        logger.info("TokenInterceptor - Pre Handle initialized, {}", TokenInterceptor.class);
 
         var name =  request.getHeader("name");
         var token =  request.getHeader("token");
@@ -47,7 +47,7 @@ public class TokenInterceptor implements HandlerInterceptor {
                 return true;
             }
         }catch (Exception e){
-            logger.warn("Invalid request to authentication endpoint");
+            logger.warn("Invalid request to authentication endpoint, {}", TokenInterceptor.class);
             throw new UnauthorizedException("Unauthorized!");
         }
         return false;

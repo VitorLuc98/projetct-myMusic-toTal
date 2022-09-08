@@ -31,6 +31,7 @@ public class MusicServiceImpl implements MusicService {
     @Transactional(readOnly = true)
     @Cacheable("musics")
     public List<MusicDto> findByMusicOrArtist(String name) {
+        log.info("Starting method of searching music by artist or song name, {}", MusicServiceImpl.class);
         if (Objects.isNull(name) || name.isEmpty()) {
             log.info("name is null or is empty");
             return findAll();

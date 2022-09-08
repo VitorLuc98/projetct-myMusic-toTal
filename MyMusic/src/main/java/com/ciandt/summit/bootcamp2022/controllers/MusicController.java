@@ -2,7 +2,6 @@ package com.ciandt.summit.bootcamp2022.controllers;
 
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.services.MusicService;
-
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -33,9 +32,9 @@ public class MusicController {
     })
     @GetMapping
     public ResponseEntity<List<MusicDto>> findByNameOrMusic(@RequestParam(required = false) String filtro){
-        log.info("Searching musics list");
+        log.info("Searching musics list, {}", MusicController.class);
         var musics = service.findByMusicOrArtist(filtro);
-        log.info("Returning the musics list");
+        log.info("Returning the musics list, {}", MusicController.class);
         return ResponseEntity.ok(musics);
     }
 }
