@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +32,12 @@ public class MusicController {
             @ApiResponse(code = 500, message = "Unexpected Exception")
     })
     @GetMapping
+    @Cacheable("findByNameOrMusic")
     public ResponseEntity<List<MusicDto>> findByNameOrMusic(@RequestParam(required = false) String filtro){
         log.info("Searching musics list, {}", MusicController.class);
         var musics = service.findByMusicOrArtist(filtro);
         log.info("Returning the musics list, {}", MusicController.class);
+        System.out.println("teste");
         return ResponseEntity.ok(musics);
     }
 }
