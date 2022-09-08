@@ -38,6 +38,8 @@ Utilizamos a arquitetura MVC.
 ](https://start.spring.io/)
 * [![SQLITE](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 ](https://www.sqlite.org/index.html)
+* [![HEROKU](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+](https://www.heroku.com/)
 
  
 * [Maven](https://mvnrepository.com/)
