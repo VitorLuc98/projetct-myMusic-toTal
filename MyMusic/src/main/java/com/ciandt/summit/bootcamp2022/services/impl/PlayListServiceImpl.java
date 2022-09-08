@@ -1,6 +1,5 @@
 package com.ciandt.summit.bootcamp2022.services.impl;
 
-import com.ciandt.summit.bootcamp2022.controllers.PlaylistController;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
 import com.ciandt.summit.bootcamp2022.model.Music;
@@ -41,6 +40,7 @@ public class PlayListServiceImpl implements PlayListService {
 
     @Override
     public PlaylistDto addMusicToPlaylist(String playlistId, MusicDto musicDto) {
+        log.info("Starting method of adding music to playlist, {}", PlayListServiceImpl.class);
         Music music = modelMapper.map(musicService.getMusicById(musicDto.getId()), Music.class);
         Playlist playlist = modelMapper.map(getPlaylistById(playlistId), Playlist.class);
 
@@ -58,14 +58,20 @@ public class PlayListServiceImpl implements PlayListService {
 
     @Override
     public void removeMusicFromPlaylist(String playlistId, String musicId) {
+        log.info("Starting Starting method of removing music from playlist, {}", PlayListServiceImpl.class);
         Music music = modelMapper.map(musicService.getMusicById(musicId), Music.class);
         Playlist playlist = modelMapper.map(getPlaylistById(playlistId), Playlist.class);
 
+        log.info("Checking if the song is in the playlist");
         if (playlist.getMusics().stream().noneMatch(m -> m.getId().equals(music.getId()))) {
+            log.warn("Music is not in the playlist");
             throw new MusicNotExistInPlaylistException("Music does not exist in the playlist!");
         }
 
+        log.info("Removing music from playlist");
         playlist.getMusics().removeIf(m -> m.getId().equals(musicId));
+
+        log.info("Saving playlist");
         playListRepository.save(playlist);
     }
 

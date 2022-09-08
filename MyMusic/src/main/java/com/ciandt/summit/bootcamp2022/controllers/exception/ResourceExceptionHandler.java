@@ -1,10 +1,13 @@
 package com.ciandt.summit.bootcamp2022.controllers.exception;
 
 import com.ciandt.summit.bootcamp2022.config.interceptor.exceptions.UnauthorizedException;
+import com.ciandt.summit.bootcamp2022.controllers.PlaylistController;
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -21,10 +24,13 @@ public class ResourceExceptionHandler {
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
+    private static final Logger log = LoggerFactory.getLogger(ResourceExceptionHandler.class);
+
     @ExceptionHandler(NameLenghtException.class)
     public ResponseEntity<StandardError> exceptionInvalidName(HttpServletRequest request) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        log.warn("Building error object: filter less than 2 characters, {}", ResourceExceptionHandler.class);
 
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
         standardError.setTimestamp(LocalDateTime.now().format(formatter));
         standardError.setStatus(status.value());
@@ -36,8 +42,9 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<StandardError> entityNotFound(ResourceNotFoundException e, HttpServletRequest request) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        log.warn("Building error object: entity not found exception, {}", ResourceExceptionHandler.class);
 
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
         standardError.setTimestamp(LocalDateTime.now().format(formatter));
         standardError.setStatus(status.value());
@@ -49,9 +56,9 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<StandardError> unauthorizedException(HttpServletRequest request) {
+        log.warn("Building error object: Unauthorized exception, {}", ResourceExceptionHandler.class);
 
         HttpStatus status = HttpStatus.UNAUTHORIZED;
-
         StandardError standardError = new StandardError();
         standardError.setTimestamp(LocalDateTime.now().format(formatter));
         standardError.setStatus(status.value());
@@ -63,8 +70,9 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(MusicExistInPlaylistException.class)
     public ResponseEntity<StandardError> musicExistInPlaylistException(MusicExistInPlaylistException e, HttpServletRequest request) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        log.warn("Building error object: Music already exists in the playlist, {}", ResourceExceptionHandler.class);
 
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
         standardError.setTimestamp(LocalDateTime.now().format(formatter));
         standardError.setStatus(status.value());
@@ -76,8 +84,9 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(MusicNotExistInPlaylistException.class)
     public ResponseEntity<StandardError> musicNotExistInPlaylistException(MusicNotExistInPlaylistException e, HttpServletRequest request) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        log.warn("Building error object: Music does not exist in the playlist, {}", ResourceExceptionHandler.class);
 
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
         standardError.setTimestamp(LocalDateTime.now().format(formatter));
         standardError.setStatus(status.value());
@@ -89,8 +98,9 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ValidationError> validation(MethodArgumentNotValidException e, HttpServletRequest request) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        log.warn("Building error object: validation errors, {}", ResourceExceptionHandler.class);
 
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         ValidationError err = new ValidationError();
 
         err.setTimestamp(LocalDateTime.now().format(formatter));

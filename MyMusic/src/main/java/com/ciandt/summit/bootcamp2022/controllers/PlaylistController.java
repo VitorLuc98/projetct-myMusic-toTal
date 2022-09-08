@@ -20,7 +20,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class PlaylistController {
 
-    private Logger log = LoggerFactory.getLogger(PlaylistController.class);
+    private static final Logger log = LoggerFactory.getLogger(PlaylistController.class);
     private final PlayListService service;
 
     @ApiOperation(value = "Add a new music to the playlist")
@@ -32,9 +32,9 @@ public class PlaylistController {
     })
     @PostMapping("{playlistId}/musicas")
     public ResponseEntity<PlaylistDto> addMusicInPlaylist(@PathVariable("playlistId") String playlistId, @Valid @RequestBody MusicDto music) {
-        log.info("Adding Music to Playlist");
+        log.info("Adding Music to Playlist, {}", PlaylistController.class);
         var playlist = service.addMusicToPlaylist(playlistId, music);
-        log.info("the song has been added to the playlist");
+        log.info("the song has been added to the playlist, {}", PlaylistController.class);
         return new ResponseEntity<>(playlist, HttpStatus.CREATED);
     }
 
@@ -46,7 +46,9 @@ public class PlaylistController {
     })
     @PutMapping("{playlistId}/musicas/{musicId}")
     public ResponseEntity<Void> removeMusicInPlaylist(@PathVariable("playlistId") String playlistId, @PathVariable("musicId") String musicId) {
+        log.info("Removing song from playlist, {}", PlaylistController.class);
         service.removeMusicFromPlaylist(playlistId, musicId);
+        log.info("Music successfully removed, {}", PlaylistController.class);
         return ResponseEntity.noContent().build();
     }
 
