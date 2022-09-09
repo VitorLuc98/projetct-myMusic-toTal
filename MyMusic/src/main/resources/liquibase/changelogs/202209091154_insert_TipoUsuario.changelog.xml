@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="202209091155-0" author="vbotelho">
+        <insert tableName="TipoUsuario">
+            <column  name="ID"  value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+            <column  name="DESCRICAO"  value="Comum"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="202209091155-1" author="vbotelho">
+        <insert tableName="TipoUsuario">
+            <column  name="ID"  value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+            <column  name="DESCRICAO"  value="Premium"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
