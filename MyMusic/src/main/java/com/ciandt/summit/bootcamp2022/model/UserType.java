@@ -5,15 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class UserType{
+@Entity
+@Table(name = "TipoUsuario")
+public class UserType implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    private String description;
 
+    @Column(name = "DESCRICAO", nullable = false)
+    private String description;
 }

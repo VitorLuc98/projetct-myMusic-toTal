@@ -23,4 +23,8 @@ public class User implements Serializable {
     @JoinColumn(name = "PlayslistId")
     @ManyToOne
     private Playlist playlist;
+
+    @JoinColumn(name = "TipoUsuarioId")
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private UserType userType;
 }
