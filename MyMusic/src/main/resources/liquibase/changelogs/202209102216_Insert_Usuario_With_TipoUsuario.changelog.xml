@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="202209102218-0" author="vbotelho">
+        <insert tableName="Usuarios">
+            <column name="ID" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+            <column name="Nome" value="mariana"/>
+            <column name="PlaylistId" value="a39926f4-6acb-4497-884f-d4e5296ef652"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+            <column name="Nome" value="ana"/>
+            <column name="PlaylistId" value="ed7f6acb-1aad-42c9-8c7b-5a49540fcbc4"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="74bfbda5-c825-40a8-b9ac-67b2b32729ec"/>
+            <column name="Nome" value="maria"/>
+            <column name="PlaylistId" value="93f7da42-d9e5-4e50-a789-b4f406897dd7"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="633d9cf5-8941-44af-9964-e1eb61c1418e"/>
+            <column name="Nome" value="jose"/>
+            <column name="PlaylistId" value="dfdbaccc-6a40-481c-a6a8-e9bad8ec03dd"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="570a1563-5ed2-4bcf-a032-576b47c790d0"/>
+            <column name="Nome" value="gabdala"/>
+            <column name="PlaylistId" value="a24dd5fb-fefd-4466-b246-d447b73c7ab9"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="66391977-777a-4c91-a455-3dac4d12816d"/>
+            <column name="Nome" value="bcontarini"/>
+            <column name="PlaylistId" value="0bda3f9e-5730-434b-be22-ffc8ff2b49b3"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="fe5c979a-469b-4c4b-ab5e-64f72f653ea5"/>
+            <column name="Nome" value="teste"/>
+            <column name="PlaylistId" value="ab53a57d-2839-4860-890b-1e6cc4826d95"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="a80678e5-d0d3-4414-8e22-c0b3f1ba2b87"/>
+            <column name="Nome" value="joao"/>
+            <column name="PlaylistId" value="654bbc71-3a9c-4434-a95d-4208f713e586"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="fbf6c54b-dca0-4d76-9130-ac6977b433bb"/>
+            <column name="Nome" value="andre"/>
+            <column name="PlaylistId" value="e643958a-f388-4c0c-ab90-787336a61ae1"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="d10a3078-6285-4d88-9474-2754f554166d"/>
+            <column name="Nome" value="jessica"/>
+            <column name="PlaylistId" value="a9614aaa-5a1b-45e0-8284-2d0985468dc8"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="6ee5a49a-cc7e-45bc-b6c1-60cff21f65eb"/>
+            <column name="Nome" value="carol"/>
+            <column name="PlaylistId" value="3cd023af-cb58-45ee-8b5d-d16668fa7226"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="50360103-60b1-481d-8aa1-7c2d2fce2f6f"/>
+            <column name="Nome" value="barbara"/>
+            <column name="PlaylistId" value="bcc463e6-81bc-4d0f-95a1-47fcefdf66d0"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="ad6eddcb-11e4-4706-b2c7-92da739060f9"/>
+            <column name="Nome" value="babi"/>
+            <column name="PlaylistId" value="942acd1b-e2a4-42e4-bb9c-1226d28d5e53"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="374f58e9-7772-4ee3-b68d-5b6e8a86647c"/>
+            <column name="Nome" value="piardi"/>
+            <column name="PlaylistId" value="1cd5561a-33cb-4609-b327-47c815e7935c"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="12e43ce6-fa96-4ffc-974d-ff1c4ef15424"/>
+            <column name="Nome" value="renato"/>
+            <column name="PlaylistId" value="f7179e0b-7a00-457e-bf08-db1f96eece5e"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="66997d2d-20fb-4dd4-97f1-15d4b0dfe155"/>
+            <column name="Nome" value="teobaldo"/>
+            <column name="PlaylistId" value="804736bc-9c37-4821-b86d-fe2d324924f9"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="7f3819c5-38e1-4f7c-a3f4-f93fcc6a48e7"/>
+            <column name="Nome" value="mateuscg"/>
+            <column name="PlaylistId" value="861f7cdf-960d-4317-8694-82a897df2c25"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="ba0dcc8b-ebcb-481f-88d8-4d660964f2d7"/>
+            <column name="Nome" value="mateus"/>
+            <column name="PlaylistId" value="fadad621-3ff5-4c66-94ba-f57cc16df792"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="6608098e-7e59-4b5a-a348-e62a52058003"/>
+            <column name="Nome" value="godoy"/>
+            <column name="PlaylistId" value="775fe3d7-117d-4136-8a45-9fa696b63f65"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="ab2e7653-4b35-48a5-9fa5-4f93409f99ad"/>
+            <column name="Nome" value="wo"/>
+            <column name="PlaylistId" value="b54c99b2-1816-47d3-b41c-9f1d070462ab"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="21a2cb7c-8bbe-40b3-ae18-c02660e257b0"/>
+            <column name="Nome" value="vitor"/>
+            <column name="PlaylistId" value="0ca61061-1fa8-418e-8e17-8234fb38c7a8"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="be755497-bd8b-4ea9-b2c6-0ab8de5eeed1"/>
+            <column name="Nome" value="cartaxo"/>
+            <column name="PlaylistId" value="f199b9ad-7ea8-4dbe-abc2-af082211dd85"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="91821da8-b8fc-4654-b81c-6b6f5f60cb40"/>
+            <column name="Nome" value="abdala"/>
+            <column name="PlaylistId" value="7ff43fef-2d9f-4842-a23a-4be8b35bf422"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="c921280c-4ded-469e-b472-f28ca8dfb689"/>
+            <column name="Nome" value="paulovich"/>
+            <column name="PlaylistId" value="590aee60-448c-42d1-ad60-c2e82d20d3c6"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="5f4d1175-c657-4e80-befb-dfb2ca45f1cf"/>
+            <column name="Nome" value="contarini"/>
+            <column name="PlaylistId" value="cb746719-b60e-4c38-9976-f2cbc68581cb"/>
+            <column name="TipoUsuarioId" value="0c2a04a5-d8d2-42a2-a90f-3d6e8f912b88"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="cdccd554-d835-4686-be2a-78d45447db25"/>
+            <column name="Nome" value="default"/>
+            <column name="PlaylistId" value="92d8123f-e9f6-4806-8e0e-1c6a5d46f2ed"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="4e0ceee6-b074-45c5-8473-033f7906532e"/>
+            <column name="Nome" value="tanato"/>
+            <column name="PlaylistId" value="40c9ec48-f6b1-4532-b2bc-93b8c1cc460a"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+        <insert tableName="Usuarios">
+            <column name="ID" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa2"/>
+            <column name="Nome" value="mariana"/>
+            <column name="PlaylistId" value="a39926f4-6acb-4497-884f-d4e5296ef653"/>
+            <column name="TipoUsuarioId" value="dd444a81-9588-4e6b-9d3d-1f1036a6eaa1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
