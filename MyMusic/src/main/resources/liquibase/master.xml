@@ -7,5 +7,6 @@
 
     <include file="liquibase/changelogs/202209091111_Create_Table_TipoUsuario.changelog.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelogs/202209091154_insert_TipoUsuario.changelog.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelogs/202209102216_Insert_Usuario_With_TipoUsuario.changelog.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>
