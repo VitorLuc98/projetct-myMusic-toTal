@@ -20,6 +20,6 @@ public class UserType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @Column(name = "DESCRICAO", nullable = false)
+    @Column(name = "Descricao", nullable = false)
     private String description;
 }
