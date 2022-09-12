@@ -22,7 +22,7 @@ public class User implements Serializable {
     @Column(name = "Nome", nullable = false)
     private String name;
 
-    @JoinColumn(name = "PlayslistId")
+    @JoinColumn(name = "PlaylistId")
     @ManyToOne
     private Playlist playlist;
 

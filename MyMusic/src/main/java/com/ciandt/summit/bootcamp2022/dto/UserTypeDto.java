@@ -14,13 +14,8 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserTypeDto {
+
     private String id;
     private String description;
-    private User user;
-    private UserType userType;
-
-
-
-
 
 }
