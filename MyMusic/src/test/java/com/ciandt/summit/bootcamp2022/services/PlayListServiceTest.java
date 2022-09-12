@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.services.impl;
+package com.ciandt.summit.bootcamp2022.services;
 
 import com.ciandt.summit.bootcamp2022.dto.ArtistDto;
 import com.ciandt.summit.bootcamp2022.dto.MusicDto;
@@ -6,12 +6,12 @@ import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
 import com.ciandt.summit.bootcamp2022.model.Artist;
 import com.ciandt.summit.bootcamp2022.model.Music;
 import com.ciandt.summit.bootcamp2022.model.Playlist;
-import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
 import com.ciandt.summit.bootcamp2022.repositories.PlaylistRepository;
-import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
+import com.ciandt.summit.bootcamp2022.services.impl.MusicServiceImpl;
+import com.ciandt.summit.bootcamp2022.services.impl.PlayListServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -29,7 +29,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class PlayListServiceImplTest {
+class PlayListServiceTest {
 
     @Autowired
     PlayListServiceImpl service;
