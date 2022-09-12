@@ -2,6 +2,9 @@ package com.ciandt.summit.bootcamp2022.controllers;
 
 import com.ciandt.summit.bootcamp2022.dto.UserDto;
 import com.ciandt.summit.bootcamp2022.services.UserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,11 @@ public class UserController {
 
     private final UserService service;
 
+    @ApiOperation(value = "Search user by id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "returns user by id and his playlist with his songs"),
+            @ApiResponse(code = 401, message = "Do not have permission to access this resource"),
+    })
     @GetMapping(value="/{userId}")
     public ResponseEntity<UserDto> findUserById(@PathVariable("userId") String userId){
         log.info("Searching user list, {}", UserController.class);
