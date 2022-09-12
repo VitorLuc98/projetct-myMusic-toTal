@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,11 +22,14 @@ public class User implements Serializable {
     @Column(name = "Nome", nullable = false)
     private String name;
 
-    @JoinColumn(name = "PlayslistId")
+    @JoinColumn(name = "PlaylistId")
     @ManyToOne
     private Playlist playlist;
 
     @JoinColumn(name = "TipoUsuarioId")
     @ManyToOne(cascade = CascadeType.REMOVE)
     private UserType userType;
+
+
+
 }
