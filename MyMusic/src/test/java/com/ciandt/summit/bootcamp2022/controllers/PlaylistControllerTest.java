@@ -15,9 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -110,7 +108,7 @@ class PlaylistControllerTest {
 
 
     @Test
-    void removeMusicFromPlaylistShouldDeleteMusicFromThePlaylist() throws Exception{
+    void removeMusicFromPlaylistShouldDeleteMusicFromThePlaylist() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/api/playlists/1/musicas/1")
                         .content(asJsonString(playlist))
@@ -118,12 +116,13 @@ class PlaylistControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
 
-        verify(service,times(1)).removeMusicFromPlaylist("1","1");
+        verify(service, times(1)).removeMusicFromPlaylist("1", "1");
     }
+
     @Test
-    void removeMusicFromPlaylistWhenMusicDontExistInThePlaylist() throws Exception{
+    void removeMusicFromPlaylistWhenMusicDontExistInThePlaylist() throws Exception {
         doThrow(new MusicNotExistInPlaylistException("Music does not exist in the playlist!"))
-                .when(service).removeMusicFromPlaylist(Mockito.anyString(),Mockito.anyString());
+                .when(service).removeMusicFromPlaylist(Mockito.anyString(), Mockito.anyString());
 
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/api/playlists/1/musicas/1")
