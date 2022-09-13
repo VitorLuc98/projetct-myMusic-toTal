@@ -90,7 +90,7 @@ public class PlayListServiceImpl implements PlayListService {
         checksMusicExistsInPlaylist(playlist, music);
 
         var qtdMusics = user.getPlaylist().getMusics().stream().count();
-        if (user.getUserType().getDescription().equals("Comum") && qtdMusics > 5){
+        if (user.getUserType().getDescription().equals("Comum") && qtdMusics > 4){
             throw new MusicLimitAchieved("You have reached the maximum number of songs in your playlist. To add more songs, purchase the premium plan");
         }
         playlist.getMusics().add(music);
