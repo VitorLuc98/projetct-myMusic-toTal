@@ -34,7 +34,7 @@ Para realizar este projeto optamos pela arquitetura MVC (Model,View e Controller
   - Facilidade para os desenvolvedores colaborarem e trabalharem juntos
   - Separação muito clara entre as camadas de visualização e regras de negócios
   - Reaproveitamento do código
-  - Permite o desenvolvimento, testes e manutenção de forma isolada entre as camadas
+  - Permitir o desenvolvimento, testes e manutenção de forma isolada entre as camadas
 
   
 # Tecnologias e ferramentas utilizadas
