@@ -60,7 +60,7 @@ https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
  <table>
   <tr>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/naianebatista">
         <img src="https://media-exp1.licdn.com/dms/image/C4D03AQErWTiH6_yPUA/profile-displayphoto-shrink_200_200/0/1659616963578?e=1668643200&v=beta&t=2wcu-mfDBAeJNXv5t6bE0Mjqsb4dPIhKCPGq_MOB78c" width="100px;" alt="Foto da Naiane Batistaa"/><br>
         <sub>
           <b>Naiane Batista</b>
@@ -68,7 +68,7 @@ https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
       </a>
     </td>
       <td align="center">
-      <a href="#">
+      <a href="https://github.com/diegolmciant">
         <img src="https://lh3.googleusercontent.com/a-/AFdZuco2NDBhiDD6hYzsyT_oLFMsX5RB6ltsEhXITbCM=s88-w88-h88-c-k" width="100px;" alt="Foto do Diego Lopes"/><br>
         <sub>
           <b>Diego Lopes</b>
@@ -76,7 +76,7 @@ https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/VitorLuc98">
         <img src="https://media-exp1.licdn.com/dms/image/C4E03AQG-crUcGTGkUQ/profile-displayphoto-shrink_200_200/0/1638483907302?e=1668643200&v=beta&t=z5-IluGd406mBNYZ8pOVuCxOlkeaUbWnrOUfbWRiVjs" width="100px;" alt="Foto do Vitor Lucas"/><br>
         <sub>
           <b>Vitor Lucas</b>
