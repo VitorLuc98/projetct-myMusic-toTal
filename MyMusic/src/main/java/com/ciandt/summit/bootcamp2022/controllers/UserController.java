@@ -23,6 +23,7 @@ public class UserController {
     @ApiOperation(value = "Search user by id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "returns user by id and his playlist with his songs"),
+            @ApiResponse(code = 400, message = "User does not exist in database,"),
             @ApiResponse(code = 401, message = "Do not have permission to access this resource"),
     })
     @GetMapping(value="/{userId}")
