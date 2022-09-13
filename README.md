@@ -76,7 +76,7 @@ https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://lh3.googleusercontent.com/a-/AFdZucpNm2htJ5nvRYCsRcJ_NDT5vO3Ycal1kP4wirbu=s24-w24-h24-c-k" width="100px;" alt="Foto do Vitor Lucas"/><br>
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQG-crUcGTGkUQ/profile-displayphoto-shrink_200_200/0/1638483907302?e=1668643200&v=beta&t=z5-IluGd406mBNYZ8pOVuCxOlkeaUbWnrOUfbWRiVjs" width="100px;" alt="Foto do Vitor Lucas"/><br>
         <sub>
           <b>Vitor Lucas</b>
         </sub>
@@ -84,7 +84,7 @@ https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://lh3.googleusercontent.com/a-/AFdZucrJx7YEucIjWINJhX3Dm6iJuPoHPHvex0yyfIar=s24-w24-h24-c-k" width="100px;" alt="Foto do Emerson Fernandes"/><br>
+        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGMwGOkf9lCVw/profile-displayphoto-shrink_200_200/0/1633096029540?e=1668643200&v=beta&t=LNbbekA4ucHU-juwKYF8rJzF3y4JhKm1oc-Imt-h580" width="100px;" alt="Foto do Emerson Fernandes"/><br>
         <sub>
           <b>Emerson Fernandes</b>
         </sub>
