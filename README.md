@@ -84,7 +84,7 @@ https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/emerson-feral">
         <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGMwGOkf9lCVw/profile-displayphoto-shrink_200_200/0/1633096029540?e=1668643200&v=beta&t=LNbbekA4ucHU-juwKYF8rJzF3y4JhKm1oc-Imt-h580" width="100px;" alt="Foto do Emerson Fernandes"/><br>
         <sub>
           <b>Emerson Fernandes</b>
