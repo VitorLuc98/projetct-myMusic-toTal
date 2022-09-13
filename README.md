@@ -54,7 +54,7 @@ Utilizamos a arquitetura MVC.
 * [Git](https://git-scm.com/)
 * [GitHub](https://github.com/)
   
-## :handshake: Gerenciamento do Projeto
+# Gerenciamento do Projeto
 ##### Para gerenciar o projeto, foram realizados os seguintes ritos:
 - Daily;
 - Planning;
