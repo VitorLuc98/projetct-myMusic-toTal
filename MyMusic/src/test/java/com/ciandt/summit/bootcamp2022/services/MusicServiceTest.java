@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,9 +33,9 @@ class MusicServiceTest {
     @MockBean
     MusicRepository repository;
 
-    Music music;
-    MusicDto musicDTO;
-    Optional<Music> optionalMusic;
+    private Music music;
+    private MusicDto musicDTO;
+    private Optional<Music> optionalMusic;
 
 
     @BeforeEach
@@ -55,6 +56,18 @@ class MusicServiceTest {
         assertNotNull(musicResponse);
         assertEquals(1,musicResponse.size());
         assertEquals(MusicDto.class,musicResponse.get(0).getClass());
+    }
+
+    @Test
+    void findByMusicOrArtistWhenReturnEmptyList(){
+        when(repository.findAll()).thenReturn(Collections.emptyList());
+
+        var response = service.findByMusicOrArtist(null);
+
+        System.out.println(">>>>>>>>> " + response.size());
+
+        assertNotNull(response);
+        assertEquals(0,response.size());
     }
 
     @Test
