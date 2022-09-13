@@ -56,3 +56,37 @@ Utilizamos a arquitetura MVC.
 Project Link: 
 https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
 <a href="https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop">
+ <table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQErWTiH6_yPUA/profile-displayphoto-shrink_200_200/0/1659616963578?e=1668643200&v=beta&t=2wcu-mfDBAeJNXv5t6bE0Mjqsb4dPIhKCPGq_MOB78c" width="100px;" alt="Foto da Naiane Batistaa"/><br>
+        <sub>
+          <b>Naiane Batista</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="#">
+        <img src="https://lh3.googleusercontent.com/a-/AFdZuco2NDBhiDD6hYzsyT_oLFMsX5RB6ltsEhXITbCM=s88-w88-h88-c-k" width="100px;" alt="Foto do Diego Lopes"/><br>
+        <sub>
+          <b>Diego Lopes</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://lh3.googleusercontent.com/a-/AFdZucpNm2htJ5nvRYCsRcJ_NDT5vO3Ycal1kP4wirbu=s24-w24-h24-c-k" width="100px;" alt="Foto do Vitor Lucas"/><br>
+        <sub>
+          <b>Vitor Lucas</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://lh3.googleusercontent.com/a-/AFdZucrJx7YEucIjWINJhX3Dm6iJuPoHPHvex0yyfIar=s24-w24-h24-c-k" width="100px;" alt="Foto do Emerson Fernandes"/><br>
+        <sub>
+          <b>Emerson Fernandes</b>
+        </sub>
+      </a>
+    </td>
