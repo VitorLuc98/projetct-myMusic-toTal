@@ -30,8 +30,13 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 - [x] Possuímos dois tipos de usuáros: Premium e comum.
 
 # Arquitetura
-Utilizamos a arquitetura MVC.
+Para realizar este projeto optamos pela arquitetura MVC (Model,View e Controller). A razão desta escolha é que com a arquitetura MVC temos os seguintes benefícios:
+  - Facilidade para os desenvolvedores colaborarem e trabalharem juntos
+  - Separação muito clara entre as camadas de visualização e regras de negócios
+  - Reaproveitamento do código
+  - Permite o desenvolvimento, testes e manutenção de forma isolada entre as camadas
 
+  
 # Tecnologias e ferramentas utilizadas
 
 * [![Java 11](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
