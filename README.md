@@ -11,6 +11,7 @@
  <a href="#principais-funcionalidades">Principais Funcionalidades<a/> .
  <a href="#arquitetura">Arquiteura<a/> .
  <a href="#tecnologias-e-ferramentas-utilizadas">Tecnologias e ferramentas utilizadas<a/> .
+ <a href="#gerenciamento-do-projeto">Gerenciamento<a/> . 
  <a href="#colaboradores">Colaboradores<a/>
   </p>
   
@@ -52,8 +53,15 @@ Utilizamos a arquitetura MVC.
 * [Intellij IDEA](https://www.jetbrains.com/idea/)
 * [Git](https://git-scm.com/)
 * [GitHub](https://github.com/)
+  
+## :handshake: Gerenciamento do Projeto
+##### Para gerenciar o projeto, foram realizados os seguintes ritos:
+- Daily;
+- Planning;
+- Demo e retrospective;
+- Checkpoint Técnico semanal;
 
-# Colaboradores
+## :robot: Colaboradores
 Project Link: 
 https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
 <a href="https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop">
