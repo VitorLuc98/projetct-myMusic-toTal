@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 # <p align="center">🎵 My Music 2022 </p>
 ## <p align="center"> 🎶 IT Music  </p>
 
@@ -90,3 +91,7 @@ https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
         </sub>
       </a>
     </td>
+ </tr>
+</table>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
