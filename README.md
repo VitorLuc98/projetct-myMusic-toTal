@@ -61,7 +61,7 @@ Utilizamos a arquitetura MVC.
 - Demo e retrospective;
 - Checkpoint Técnico semanal;
 
-## :robot: Colaboradores
+# Colaboradores
 Project Link: 
 https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
 <a href="https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop">
