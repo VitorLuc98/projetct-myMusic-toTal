@@ -50,7 +50,6 @@ Para realizar este projeto optamos pela arquitetura MVC (Model,View e Controller
 
  
 * [Maven](https://mvnrepository.com/)
-* [Spring Boot Actuator](https://mvnrepository.com/)
 * [JPA/ Hibernate](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 * [Swagger](https://swagger.io/)
 * [Mockito](https://site.mockito.org/)
