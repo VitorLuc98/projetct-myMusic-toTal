@@ -10,13 +10,13 @@ import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.impl.MusicServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,39 +47,51 @@ class MusicServiceTest {
         optionalMusic = Optional.of(music);
     }
 
-    @Test
-    void findByMusicOrArtistShouldReturnAllMusicsWhenParameterIsNull(){
-        when(repository.findAll()).thenReturn(List.of(music));
-
-        var musicResponse = service.findByMusicOrArtist(null);
-
-        assertNotNull(musicResponse);
-        assertEquals(1,musicResponse.size());
-        assertEquals(MusicDto.class,musicResponse.get(0).getClass());
-    }
-
-    @Test
-    void findByMusicOrArtistWhenReturnEmptyList(){
-        when(repository.findAll()).thenReturn(Collections.emptyList());
-
-        var response = service.findByMusicOrArtist(null);
-
-        System.out.println(">>>>>>>>> " + response.size());
-
-        assertNotNull(response);
-        assertEquals(0,response.size());
-    }
+//    @Test
+//    @Order(1)
+//    void findByMusicOrArtistWhenReturnEmptyList(){
+//        when(repository.findAll()).thenReturn(Collections.emptyList());
+//
+//        var musicResponse = service.findByMusicOrArtist(null);
+//
+//        System.out.println(">>>>>>>>> " + musicResponse.size());
+//
+//        assertNotNull(musicResponse);
+//        assertEquals(0,musicResponse.size());
+//    }
+//
+//    @Test
+//    @Order(2)
+//    void findByMusicOrArtistShouldReturnAllMusicsWhenParameterIsNull(){
+//        when(repository.findAll()).thenReturn(List.of(music));
+//
+//        var musicResponse = service.findByMusicOrArtist(null);
+//
+//        assertNotNull(musicResponse);
+//        assertEquals(1,musicResponse.size());
+//        assertEquals(MusicDto.class,musicResponse.get(0).getClass());
+//    }
 
     @Test
     void findByMusicOrArtistShouldReturnMusicsWhenParameterIsValid(){
         var filtro = "Animus";
         when(repository.findAllByNameMusicOrNameArtist(filtro)).thenReturn(List.of(music));
 
-        var musicResponse = service.findByMusicOrArtist(filtro);
+        var response = service.findByMusicOrArtist(filtro);
 
-        assertNotNull(musicResponse);
-        assertEquals(1,musicResponse.size());
-        assertEquals(MusicDto.class,musicResponse.get(0).getClass());
+        assertNotNull(response);
+        assertEquals(1,response.size());
+        assertEquals(MusicDto.class,response.get(0).getClass());
+    }
+
+    @Test
+    void findByMusicOrArtistShouldThrowListIsEmptyException(){
+        var exception = assertThrows(
+                ListIsEmptyException.class,() -> service.findByMusicOrArtist("JBK42"),
+                "Exception not found");
+
+        assertEquals("Couldn't find any artist or song with the given name",exception.getMessage());
+        assertEquals(ListIsEmptyException.class,exception.getClass());
     }
 
     @Test
@@ -93,13 +105,24 @@ class MusicServiceTest {
     }
 
     @Test
-    void findByMusicOrArtistShouldThrowListIsEmptyException(){
+    void findByMusicOrArtistWhenTheParameterIsEqualToNullThenThrowsNameLengthException(){
         var exception = assertThrows(
-                ListIsEmptyException.class,() -> service.findByMusicOrArtist("JBK42"),
+                NameLenghtException.class,() -> service.findByMusicOrArtist(null),
                 "Exception not found");
 
-        assertEquals("Couldn't find any artist or song with the given name",exception.getMessage());
-        assertEquals(ListIsEmptyException.class,exception.getClass());
+        assertEquals("The name should have more than 2 characters",exception.getMessage());
+        assertEquals(NameLenghtException.class,exception.getClass());
+    }
+
+    @Test
+    void findByMusicOrArtistWhenNameLengthEqualsTo2AndMusicRepositoryMockReturnOneRecordThenReturnMusic(){
+        when(repository.findAllByNameMusicOrNameArtist("JB")).thenReturn(List.of(music));
+
+        var response = service.findByMusicOrArtist("JB");
+
+        assertNotNull(response);
+        assertEquals(1,response.size());
+        assertEquals(MusicDto.class,response.get(0).getClass());
     }
 
     @Test
