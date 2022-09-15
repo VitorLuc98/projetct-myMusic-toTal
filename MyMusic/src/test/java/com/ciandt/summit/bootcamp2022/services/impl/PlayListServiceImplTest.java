@@ -6,9 +6,7 @@ import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
 import com.ciandt.summit.bootcamp2022.model.Artist;
 import com.ciandt.summit.bootcamp2022.model.Music;
 import com.ciandt.summit.bootcamp2022.model.Playlist;
-import com.ciandt.summit.bootcamp2022.repositories.MusicRepository;
 import com.ciandt.summit.bootcamp2022.repositories.PlaylistRepository;
-import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
@@ -24,8 +22,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
