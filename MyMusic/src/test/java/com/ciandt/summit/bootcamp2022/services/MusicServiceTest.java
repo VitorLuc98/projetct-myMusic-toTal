@@ -118,16 +118,6 @@ class MusicServiceTest {
         assertEquals(NameLenghtException.class,exception.getClass());
     }
 
-//    @Test
-//    void findByMusicOrArtistWhenTheParameterIsEqualToNullThenThrowsNameLengthException(){
-//        var exception = assertThrows(
-//                NameLenghtException.class,() -> service.findByMusicOrArtist(null),
-//                "Exception not found");
-//
-//        assertEquals("The name should have more than 2 characters",exception.getMessage());
-//        assertEquals(NameLenghtException.class,exception.getClass());
-//    }
-
     @Test
     void findByMusicOrArtistWhenNameLengthEqualsTo2AndMusicRepositoryMockReturnOneRecordThenReturnMusic(){
         when(repository.findAllByNameMusicOrNameArtist("JB")).thenReturn(List.of(music));
