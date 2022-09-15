@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 # <p align="center">🎵 My Music 2022 </p>
 ## <p align="center"> 🎶 IT Music  </p>
 
@@ -10,6 +11,7 @@
  <a href="#principais-funcionalidades">Principais Funcionalidades<a/> .
  <a href="#arquitetura">Arquiteura<a/> .
  <a href="#tecnologias-e-ferramentas-utilizadas">Tecnologias e ferramentas utilizadas<a/> .
+ <a href="#gerenciamento-do-projeto">Gerenciamento<a/> . 
  <a href="#colaboradores">Colaboradores<a/>
   </p>
   
@@ -28,8 +30,13 @@ Para aplicar todo o conteúdo estudado no Bootcamp da Ci&t, nossa equipe desenvo
 - [x] Possuímos dois tipos de usuáros: Premium e comum.
 
 # Arquitetura
-Utilizamos a arquitetura MVC.
+Para realizar este projeto optamos pela arquitetura MVC (Model,View e Controller). A razão desta escolha é que com a arquitetura MVC temos os seguintes benefícios:
+  - Facilidade para os desenvolvedores colaborarem e trabalharem juntos
+  - Separação muito clara entre as camadas de visualização e regras de negócios
+  - Reaproveitamento do código
+  - Permitir o desenvolvimento, testes e manutenção de forma isolada entre as camadas
 
+  
 # Tecnologias e ferramentas utilizadas
 
 * [![Java 11](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
@@ -43,7 +50,6 @@ Utilizamos a arquitetura MVC.
 
  
 * [Maven](https://mvnrepository.com/)
-* [Spring Boot Actuator](https://mvnrepository.com/)
 * [JPA/ Hibernate](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 * [Swagger](https://swagger.io/)
 * [Mockito](https://site.mockito.org/)
@@ -51,8 +57,53 @@ Utilizamos a arquitetura MVC.
 * [Intellij IDEA](https://www.jetbrains.com/idea/)
 * [Git](https://git-scm.com/)
 * [GitHub](https://github.com/)
+  
+# Gerenciamento do Projeto
+##### Para gerenciar o projeto, foram realizados os seguintes ritos:
+- Daily;
+- Planning;
+- Demo e retrospective;
+- Checkpoint Técnico semanal;
 
 # Colaboradores
 Project Link: 
 https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop
 <a href="https://github.com/VitorLuc98/projetct-myMusic-toTal/tree/develop">
+ <table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/naianebatista">
+        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQErWTiH6_yPUA/profile-displayphoto-shrink_200_200/0/1659616963578?e=1668643200&v=beta&t=2wcu-mfDBAeJNXv5t6bE0Mjqsb4dPIhKCPGq_MOB78c" width="100px;" alt="Foto da Naiane Batistaa"/><br>
+        <sub>
+          <b>Naiane Batista</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="https://github.com/diegolmciant">
+        <img src="https://lh3.googleusercontent.com/a-/AFdZuco2NDBhiDD6hYzsyT_oLFMsX5RB6ltsEhXITbCM=s88-w88-h88-c-k" width="100px;" alt="Foto do Diego Lopes"/><br>
+        <sub>
+          <b>Diego Lopes</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/VitorLuc98">
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQG-crUcGTGkUQ/profile-displayphoto-shrink_200_200/0/1638483907302?e=1668643200&v=beta&t=z5-IluGd406mBNYZ8pOVuCxOlkeaUbWnrOUfbWRiVjs" width="100px;" alt="Foto do Vitor Lucas"/><br>
+        <sub>
+          <b>Vitor Lucas</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/emerson-feral">
+        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGMwGOkf9lCVw/profile-displayphoto-shrink_200_200/0/1633096029540?e=1668643200&v=beta&t=LNbbekA4ucHU-juwKYF8rJzF3y4JhKm1oc-Imt-h580" width="100px;" alt="Foto do Emerson Fernandes"/><br>
+        <sub>
+          <b>Emerson Fernandes</b>
+        </sub>
+      </a>
+    </td>
+ </tr>
+</table>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

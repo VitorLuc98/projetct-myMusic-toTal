@@ -2,10 +2,6 @@ package com.ciandt.summit.bootcamp2022.controllers.exception;
 
 import com.ciandt.summit.bootcamp2022.config.interceptor.exceptions.UnauthorizedException;
 import com.ciandt.summit.bootcamp2022.controllers.PlaylistController;
-import com.ciandt.summit.bootcamp2022.services.exceptions.MusicExistInPlaylistException;
-import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
-import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
-import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,6 +105,7 @@ public class ResourceExceptionHandler {
 
         return ResponseEntity.status(status).body(standardError);
     }
+
 
     @ExceptionHandler(MusicLimitAchievedException.class)
     public ResponseEntity<StandardError> musicLimitAchieved(MusicLimitAchievedException e, HttpServletRequest request) {

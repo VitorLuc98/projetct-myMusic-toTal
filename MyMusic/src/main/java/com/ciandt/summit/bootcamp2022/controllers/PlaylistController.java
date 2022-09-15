@@ -52,4 +52,10 @@ public class PlaylistController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("{playlistId}/{userId}/musicas")
+    public ResponseEntity<PlaylistDto> userAddMusicInPlaylist(@PathVariable("playlistId") String playlistId, @PathVariable("userId") String userId, @Valid @RequestBody MusicDto music) {
+        var playlist = service.userAddMusicToPlaylist(playlistId, userId, music);
+        return new ResponseEntity<>(playlist, HttpStatus.CREATED);
+    }
+
 }
