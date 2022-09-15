@@ -9,13 +9,8 @@ import com.ciandt.summit.bootcamp2022.services.exceptions.ListIsEmptyException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
 import com.ciandt.summit.bootcamp2022.services.impl.MusicServiceImpl;
-import org.hibernate.service.spi.InjectService;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
@@ -29,7 +24,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class MusicServiceTest {
@@ -117,16 +113,6 @@ class MusicServiceTest {
         assertEquals("The name should have more than 2 characters",exception.getMessage());
         assertEquals(NameLenghtException.class,exception.getClass());
     }
-
-//    @Test
-//    void findByMusicOrArtistWhenTheParameterIsEqualToNullThenThrowsNameLengthException(){
-//        var exception = assertThrows(
-//                NameLenghtException.class,() -> service.findByMusicOrArtist(null),
-//                "Exception not found");
-//
-//        assertEquals("The name should have more than 2 characters",exception.getMessage());
-//        assertEquals(NameLenghtException.class,exception.getClass());
-//    }
 
     @Test
     void findByMusicOrArtistWhenNameLengthEqualsTo2AndMusicRepositoryMockReturnOneRecordThenReturnMusic(){
