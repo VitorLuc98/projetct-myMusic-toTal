@@ -11,16 +11,20 @@ import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundExcept
 import com.ciandt.summit.bootcamp2022.services.impl.MusicServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -29,12 +33,15 @@ class MusicServiceTest {
     @Autowired
     MusicServiceImpl service;
 
+    @Autowired
+    ModelMapper modelMapper;
+
     @MockBean
     MusicRepository repository;
 
-    Music music;
-    MusicDto musicDTO;
-    Optional<Music> optionalMusic;
+    private Music music;
+    private MusicDto musicDTO;
+    private Optional<Music> optionalMusic;
 
 
     @BeforeEach
@@ -44,6 +51,23 @@ class MusicServiceTest {
         music = new Music("1", "Animus", new Artist("2", "Monuments"));
         musicDTO = new MusicDto("1", "Animus", new ArtistDto("2", "Monuments"));
         optionalMusic = Optional.of(music);
+
+        repository = mock(MusicRepository.class);
+        service = new MusicServiceImpl(repository,modelMapper);
+    }
+
+
+    @Test
+    void findByMusicOrArtistWhenReturnEmptyList(){
+        Mockito.clearAllCaches();
+        when(repository.findAll()).thenReturn(Collections.emptyList());
+
+        var musicResponse = service.findByMusicOrArtist(null);
+
+        System.out.println(">>>>>>>>> " + musicResponse.size());
+
+        assertNotNull(musicResponse);
+        assertEquals(0,musicResponse.size());
     }
 
     @Test
@@ -57,16 +81,27 @@ class MusicServiceTest {
         assertEquals(MusicDto.class,musicResponse.get(0).getClass());
     }
 
+
     @Test
     void findByMusicOrArtistShouldReturnMusicsWhenParameterIsValid(){
         var filtro = "Animus";
         when(repository.findAllByNameMusicOrNameArtist(filtro)).thenReturn(List.of(music));
 
-        var musicResponse = service.findByMusicOrArtist(filtro);
+        var response = service.findByMusicOrArtist(filtro);
 
-        assertNotNull(musicResponse);
-        assertEquals(1,musicResponse.size());
-        assertEquals(MusicDto.class,musicResponse.get(0).getClass());
+        assertNotNull(response);
+        assertEquals(1,response.size());
+        assertEquals(MusicDto.class,response.get(0).getClass());
+    }
+
+    @Test
+    void findByMusicOrArtistShouldThrowListIsEmptyException(){
+        var exception = assertThrows(
+                ListIsEmptyException.class,() -> service.findByMusicOrArtist("JBK42"),
+                "Exception not found");
+
+        assertEquals("Couldn't find any artist or song with the given name",exception.getMessage());
+        assertEquals(ListIsEmptyException.class,exception.getClass());
     }
 
     @Test
@@ -80,13 +115,14 @@ class MusicServiceTest {
     }
 
     @Test
-    void findByMusicOrArtistShouldThrowListIsEmptyException(){
-        var exception = assertThrows(
-                ListIsEmptyException.class,() -> service.findByMusicOrArtist("JBK42"),
-                "Exception not found");
+    void findByMusicOrArtistWhenNameLengthEqualsTo2AndMusicRepositoryMockReturnOneRecordThenReturnMusic(){
+        when(repository.findAllByNameMusicOrNameArtist("JB")).thenReturn(List.of(music));
 
-        assertEquals("Couldn't find any artist or song with the given name",exception.getMessage());
-        assertEquals(ListIsEmptyException.class,exception.getClass());
+        var response = service.findByMusicOrArtist("JB");
+
+        assertNotNull(response);
+        assertEquals(1,response.size());
+        assertEquals(MusicDto.class,response.get(0).getClass());
     }
 
     @Test

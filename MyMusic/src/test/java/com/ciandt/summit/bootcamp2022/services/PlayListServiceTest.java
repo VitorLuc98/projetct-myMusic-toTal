@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -55,10 +55,10 @@ class PlayListServiceTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        music = new Music("1","Animus", new Artist("2","Monuments"));
-        musicDto = new MusicDto("1","Animus", new ArtistDto("2","Monuments"));
-        emptyPlaylist = new Playlist("2",List.of());
-        playlist = new Playlist("1",List.of(music));
+        music = new Music("1", "Animus", new Artist("2", "Monuments"));
+        musicDto = new MusicDto("1", "Animus", new ArtistDto("2", "Monuments"));
+        emptyPlaylist = new Playlist("2", List.of());
+        playlist = new Playlist("1", List.of(music));
         playlist2 = new Playlist("2", List.of(music));
         playlistDto = new PlaylistDto("1", List.of(musicDto));
         playlistDto2 = new PlaylistDto("2", List.of(musicDto, musicDto, musicDto, musicDto, musicDto));
@@ -74,8 +74,8 @@ class PlayListServiceTest {
                 ResourceNotFoundException.class, () -> service.getPlaylistById(null),
                 "Exception not found");
 
-        assertEquals("PlayList Not Found!",exception.getMessage());
-        assertEquals(ResourceNotFoundException.class,exception.getClass());
+        assertEquals("PlayList Not Found!", exception.getMessage());
+        assertEquals(ResourceNotFoundException.class, exception.getClass());
     }
 
     @Test
@@ -85,7 +85,7 @@ class PlayListServiceTest {
         var playslistResponse = service.getPlaylistById("1");
 
         assertNotNull(playslistResponse);
-        assertEquals(PlaylistDto.class,playslistResponse.getClass());
+        assertEquals(PlaylistDto.class, playslistResponse.getClass());
     }
 
     @Test
@@ -94,12 +94,12 @@ class PlayListServiceTest {
         when(repository.findById(anyString())).thenReturn(emptyOptionalPlaylist);
         when(repository.save(any())).thenReturn(playlist);
 
-        var playlistResponse = service.addMusicToPlaylist("1",musicDto);
+        var playlistResponse = service.addMusicToPlaylist("1", musicDto);
 
         assertNotNull(playlistResponse);
-        assertEquals("1",playlistResponse.getId());
-        assertEquals(playlistDto.getMusics().get(0).getClass(),playlistResponse.getMusics().get(0).getClass());
-        assertEquals(playlistDto.getMusics().size(),playlistResponse.getMusics().size());
+        assertEquals("1", playlistResponse.getId());
+        assertEquals(playlistDto.getMusics().get(0).getClass(), playlistResponse.getMusics().get(0).getClass());
+        assertEquals(playlistDto.getMusics().size(), playlistResponse.getMusics().size());
     }
 
     @Test
@@ -110,11 +110,11 @@ class PlayListServiceTest {
         when(repository.save(any())).thenReturn(playlist);
 
         var exception = assertThrows(
-                MusicExistInPlaylistException.class,() -> service.addMusicToPlaylist("1",musicDto),
+                MusicExistInPlaylistException.class, () -> service.addMusicToPlaylist("1", musicDto),
                 "Exception not found");
 
-        assertEquals("Music already exists in the playlist!",exception.getMessage());
-        assertEquals(MusicExistInPlaylistException.class,exception.getClass());
+        assertEquals("Music already exists in the playlist!", exception.getMessage());
+        assertEquals(MusicExistInPlaylistException.class, exception.getClass());
     }
 
     @Test
@@ -122,22 +122,22 @@ class PlayListServiceTest {
         when(musicService.getMusicById(anyString())).thenReturn(musicDto);
         when(repository.findById(anyString())).thenReturn(optionalPlaylist);
 
-        service.removeMusicFromPlaylist("1","1");
+        service.removeMusicFromPlaylist("1", "1");
 
-        verify(repository,times(1)).save(Mockito.any(Playlist.class));
+        verify(repository, times(1)).save(Mockito.any(Playlist.class));
     }
 
     @Test
-    void removeMusicFromPlaylistShouldReturnMusicNotExistInPlaylistException(){
+    void removeMusicFromPlaylistShouldReturnMusicNotExistInPlaylistException() {
         when(musicService.getMusicById(anyString())).thenReturn(musicDto);
         when(repository.findById(anyString())).thenReturn(emptyOptionalPlaylist);
 
         var exception = assertThrows(
-                MusicNotExistInPlaylistException.class,() -> service.removeMusicFromPlaylist("1","1"),
+                MusicNotExistInPlaylistException.class, () -> service.removeMusicFromPlaylist("1", "1"),
                 "Exception not found");
 
-        assertEquals("Music does not exist in the playlist!",exception.getMessage());
-        assertEquals(MusicNotExistInPlaylistException.class,exception.getClass());
+        assertEquals("Music does not exist in the playlist!", exception.getMessage());
+        assertEquals(MusicNotExistInPlaylistException.class, exception.getClass());
     }
 
     @Test
@@ -150,9 +150,9 @@ class PlayListServiceTest {
         var playlistResponse = service.userAddMusicToPlaylist("2", "2", musicDto);
 
         assertNotNull(playlistResponse);
-        assertEquals("2",playlistResponse.getId());
-        assertEquals(playlistDto.getMusics().get(0).getClass(),playlistResponse.getMusics().get(0).getClass());
-        assertEquals(playlistDto.getMusics().size(),playlistResponse.getMusics().size());
+        assertEquals("2", playlistResponse.getId());
+        assertEquals(playlistDto.getMusics().get(0).getClass(), playlistResponse.getMusics().get(0).getClass());
+        assertEquals(playlistDto.getMusics().size(), playlistResponse.getMusics().size());
     }
 
     @Test
@@ -162,12 +162,13 @@ class PlayListServiceTest {
         when(repository.findById(anyString())).thenReturn(Optional.of(playlist));
 
         var exception = assertThrows(
-                PlaylistIsNotTheUserException.class,() -> service.userAddMusicToPlaylist("1", "2", musicDto),
+                PlaylistIsNotTheUserException.class, () -> service.userAddMusicToPlaylist("1", "2", musicDto),
                 "Exception not found");
 
-        assertEquals("Playlist does not belong to this user",exception.getMessage());
-        assertEquals(PlaylistIsNotTheUserException.class,exception.getClass());
+        assertEquals("Playlist does not belong to this user", exception.getMessage());
+        assertEquals(PlaylistIsNotTheUserException.class, exception.getClass());
     }
+
     @Test
     void userAddMusicToPlaylistShouldThrowsMusicExistInPlaylistException() {
         when(musicService.getMusicById(anyString())).thenReturn(musicDto);
@@ -175,11 +176,11 @@ class PlayListServiceTest {
         when(repository.findById(anyString())).thenReturn(Optional.of(playlist2));
 
         var exception = assertThrows(
-                MusicExistInPlaylistException.class,() -> service.userAddMusicToPlaylist("2", "2", musicDto),
+                MusicExistInPlaylistException.class, () -> service.userAddMusicToPlaylist("2", "2", musicDto),
                 "Exception not found");
 
-        assertEquals("Music already exists in the playlist!",exception.getMessage());
-        assertEquals(MusicExistInPlaylistException.class,exception.getClass());
+        assertEquals("Music already exists in the playlist!", exception.getMessage());
+        assertEquals(MusicExistInPlaylistException.class, exception.getClass());
     }
 
     @Test
@@ -191,12 +192,12 @@ class PlayListServiceTest {
         when(repository.findById(anyString())).thenReturn(Optional.of(playlist2));
 
         var exception = assertThrows(
-                MusicLimitAchievedException.class,() -> service.userAddMusicToPlaylist("2", "1", newMusicDto),
+                MusicLimitAchievedException.class, () -> service.userAddMusicToPlaylist("2", "1", newMusicDto),
                 "Exception not found");
 
         assertEquals("You have reached the maximum number of songs in your playlist. " +
-                "To add more songs, purchase the premium plan",exception.getMessage());
-        assertEquals(MusicLimitAchievedException.class,exception.getClass());
+                "To add more songs, purchase the premium plan", exception.getMessage());
+        assertEquals(MusicLimitAchievedException.class, exception.getClass());
     }
 
 }
