@@ -4,12 +4,12 @@ import com.ciandt.summit.bootcamp2022.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.dto.PlaylistDto;
 import com.ciandt.summit.bootcamp2022.model.Music;
 import com.ciandt.summit.bootcamp2022.model.Playlist;
+import com.ciandt.summit.bootcamp2022.model.User;
 import com.ciandt.summit.bootcamp2022.repositories.PlaylistRepository;
 import com.ciandt.summit.bootcamp2022.services.MusicService;
 import com.ciandt.summit.bootcamp2022.services.PlayListService;
-import com.ciandt.summit.bootcamp2022.services.exceptions.MusicExistInPlaylistException;
-import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
-import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
+import com.ciandt.summit.bootcamp2022.services.UserService;
+import com.ciandt.summit.bootcamp2022.services.exceptions.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -23,6 +23,8 @@ public class PlayListServiceImpl implements PlayListService {
 
     private final PlaylistRepository playListRepository;
     private final MusicService musicService;
+
+    private final UserService userService;
     private final ModelMapper modelMapper;
     private static final Logger log = LoggerFactory.getLogger(PlayListServiceImpl.class);
 
@@ -73,6 +75,27 @@ public class PlayListServiceImpl implements PlayListService {
 
         log.info("Saving playlist");
         playListRepository.save(playlist);
+    }
+
+    @Override
+    public PlaylistDto userAddMusicToPlaylist(String playlistId, String userId, MusicDto musicDto) {
+        User user = modelMapper.map(userService.findUserById(userId), User.class);
+        Music music = modelMapper.map(musicService.getMusicById(musicDto.getId()), Music.class);
+        Playlist playlist = modelMapper.map(getPlaylistById(playlistId), Playlist.class);
+
+        if (!user.getPlaylist().getId().equals(playlist.getId())) {
+            throw new PlaylistIsNotTheUserException("Playlist does not belong to this user");
+        }
+
+        checksMusicExistsInPlaylist(playlist, music);
+
+        var qtdMusics = user.getPlaylist().getMusics().stream().count();
+        if (user.getUserType().getDescription().equals("Comum") && qtdMusics > 4) {
+            throw new MusicLimitAchievedException("You have reached the maximum number of songs in your playlist. To add more songs, purchase the premium plan");
+        }
+        playlist.getMusics().add(music);
+        playlist = playListRepository.save(playlist);
+        return modelMapper.map(playlist, PlaylistDto.class);
     }
 
     private void checksMusicExistsInPlaylist(Playlist playlist, Music music) {

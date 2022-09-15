@@ -6,6 +6,7 @@ import com.ciandt.summit.bootcamp2022.services.exceptions.MusicExistInPlaylistEx
 import com.ciandt.summit.bootcamp2022.services.exceptions.MusicNotExistInPlaylistException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.NameLenghtException;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
+import com.ciandt.summit.bootcamp2022.services.exceptions.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -85,6 +86,32 @@ public class ResourceExceptionHandler {
     @ExceptionHandler(MusicNotExistInPlaylistException.class)
     public ResponseEntity<StandardError> musicNotExistInPlaylistException(MusicNotExistInPlaylistException e, HttpServletRequest request) {
         log.warn("Building error object: Music does not exist in the playlist, {}", ResourceExceptionHandler.class);
+
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        StandardError standardError = new StandardError();
+        standardError.setTimestamp(LocalDateTime.now().format(formatter));
+        standardError.setStatus(status.value());
+        standardError.setError(e.getMessage());
+        standardError.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(status).body(standardError);
+    }
+
+    @ExceptionHandler(PlaylistIsNotTheUserException.class)
+    public ResponseEntity<StandardError> playlistIsNotTheUser(PlaylistIsNotTheUserException e, HttpServletRequest request) {
+
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        StandardError standardError = new StandardError();
+        standardError.setTimestamp(LocalDateTime.now().format(formatter));
+        standardError.setStatus(status.value());
+        standardError.setError(e.getMessage());
+        standardError.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(status).body(standardError);
+    }
+
+    @ExceptionHandler(MusicLimitAchievedException.class)
+    public ResponseEntity<StandardError> musicLimitAchieved(MusicLimitAchievedException e, HttpServletRequest request) {
 
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
