@@ -83,15 +83,16 @@ public class PlayListServiceImpl implements PlayListService {
         Music music = modelMapper.map(musicService.getMusicById(musicDto.getId()), Music.class);
         Playlist playlist = modelMapper.map(getPlaylistById(playlistId), Playlist.class);
 
-        if (!user.getPlaylist().getId().equals(playlist.getId())){
-            throw new PlaylistIsNotTheUser("Playlist does not belong to this user");
+        if (!user.getPlaylist().getId().equals(playlist.getId())) {
+            throw new PlaylistIsNotTheUserException("Playlist does not belong to this user");
         }
 
         checksMusicExistsInPlaylist(playlist, music);
 
         var qtdMusics = user.getPlaylist().getMusics().stream().count();
-        if (user.getUserType().getDescription().equals("Comum") && qtdMusics > 4){
-            throw new MusicLimitAchieved("You have reached the maximum number of songs in your playlist. To add more songs, purchase the premium plan");
+
+        if (user.getUserType().getDescription().equals("Comum") && qtdMusics > 4) {
+            throw new MusicLimitAchievedException("You have reached the maximum number of songs in your playlist. To add more songs, purchase the premium plan");
         }
         playlist.getMusics().add(music);
         playlist = playListRepository.save(playlist);

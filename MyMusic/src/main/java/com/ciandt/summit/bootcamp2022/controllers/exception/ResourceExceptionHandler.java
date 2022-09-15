@@ -93,8 +93,8 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(status).body(standardError);
     }
 
-    @ExceptionHandler(PlaylistIsNotTheUser.class)
-    public ResponseEntity<StandardError> playlistIsNotTheUser(PlaylistIsNotTheUser e, HttpServletRequest request) {
+    @ExceptionHandler(PlaylistIsNotTheUserException.class)
+    public ResponseEntity<StandardError> playlistIsNotTheUser(PlaylistIsNotTheUserException e, HttpServletRequest request) {
 
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
@@ -106,8 +106,9 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(status).body(standardError);
     }
 
-    @ExceptionHandler(MusicLimitAchieved.class)
-    public ResponseEntity<StandardError> musicLimitAchieved(MusicLimitAchieved e, HttpServletRequest request) {
+
+    @ExceptionHandler(MusicLimitAchievedException.class)
+    public ResponseEntity<StandardError> musicLimitAchieved(MusicLimitAchievedException e, HttpServletRequest request) {
 
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError standardError = new StandardError();
