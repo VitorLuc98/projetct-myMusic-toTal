@@ -1,11 +1,12 @@
 package com.ciandt.summit.bootcamp2022.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,14 +17,13 @@ import java.util.List;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @Column(name = "Nome", nullable = false)
     private String name;
 
     @JoinColumn(name = "PlaylistId")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Playlist playlist;
 
     @JoinColumn(name = "TipoUsuarioId")
