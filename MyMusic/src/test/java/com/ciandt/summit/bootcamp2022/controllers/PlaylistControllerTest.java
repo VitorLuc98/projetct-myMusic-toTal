@@ -133,6 +133,59 @@ class PlaylistControllerTest {
                 .andExpect(jsonPath("$.error", is("Music does not exist in the playlist!")));
     }
 
+    @Test
+    void userAddMusicInPlaylistWhenIdMusicDoenstExist() throws Exception {
+        when(service.userAddMusicToPlaylist(Mockito.anyString(), Mockito.anyString(), any(MusicDto.class))).thenThrow(new ResourceNotFoundException("Music not found!"));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/api/playlists/1/1/musicas")
+                        .content(asJsonString(music1))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("Music not found!")));
+    }
+
+    @Test
+    void userAddMusicInPlaylistWhenPlaylistIdDoesntExist() throws Exception {
+        when(service.userAddMusicToPlaylist(Mockito.anyString(), Mockito.anyString(), any(MusicDto.class))).thenThrow(new ResourceNotFoundException("PlayList Not Found!"));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/api/playlists/1/1/musicas")
+                        .content(asJsonString(music1))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("PlayList Not Found!")));
+
+    }
+
+    @Test
+    void userAddMusicInPlaylistWhenUserIdDoesntExist() throws Exception {
+        when(service.userAddMusicToPlaylist(Mockito.anyString(), Mockito.anyString(), any(MusicDto.class))).thenThrow(new ResourceNotFoundException("User Not Found!"));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/api/playlists/1/1/musicas")
+                        .content(asJsonString(music1))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("User Not Found!")));
+    }
+
+    @Test
+    void userAddMusicInPlaylistShouldReturnPlaylistWithAddedMusic() throws Exception {
+        when(service.userAddMusicToPlaylist(Mockito.anyString(), Mockito.anyString(), any(MusicDto.class))).thenReturn(playlist);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/api/playlists/1/1/musicas")
+                        .content(asJsonString(music1))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$").isNotEmpty());
+    }
+
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);

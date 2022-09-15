@@ -51,7 +51,12 @@ public class PlaylistController {
         log.info("Music successfully removed, {}", PlaylistController.class);
         return ResponseEntity.noContent().build();
     }
-
+    @ApiOperation(value = "Add music to the user's playlist")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Music add successfully"),
+            @ApiResponse(code = 400, message = "Music, Playlist or User does not exist in database, or Music does not exist in playlist"),
+            @ApiResponse(code = 401, message = "No permission to access this feature")
+    })
     @PostMapping("{playlistId}/{userId}/musicas")
     public ResponseEntity<PlaylistDto> userAddMusicInPlaylist(@PathVariable("playlistId") String playlistId, @PathVariable("userId") String userId, @Valid @RequestBody MusicDto music) {
         var playlist = service.userAddMusicToPlaylist(playlistId, userId, music);
