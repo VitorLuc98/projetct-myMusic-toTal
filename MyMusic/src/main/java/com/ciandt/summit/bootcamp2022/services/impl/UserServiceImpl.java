@@ -1,6 +1,8 @@
 package com.ciandt.summit.bootcamp2022.services.impl;
 
 import com.ciandt.summit.bootcamp2022.dto.UserDto;
+import com.ciandt.summit.bootcamp2022.model.Playlist;
+import com.ciandt.summit.bootcamp2022.model.User;
 import com.ciandt.summit.bootcamp2022.repositories.UserRepository;
 import com.ciandt.summit.bootcamp2022.services.UserService;
 import com.ciandt.summit.bootcamp2022.services.exceptions.ResourceNotFoundException;
@@ -10,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +33,16 @@ public class UserServiceImpl implements UserService {
             throw new ResourceNotFoundException("User Not Found!");
         }
         return modelMapper.map(user, UserDto.class);
+    }
+
+    @Override
+    public UserDto saveUser(UserDto userDto) {
+        log.info("Converting UserDto to User");
+        var entity = modelMapper.map(userDto, User.class);
+        entity.setId(UUID.randomUUID().toString());
+        entity.setPlaylist(new Playlist());
+        log.info("Saving the user in the repository");
+        entity = userRepository.save(entity);
+        return modelMapper.map(entity, UserDto.class);
     }
 }

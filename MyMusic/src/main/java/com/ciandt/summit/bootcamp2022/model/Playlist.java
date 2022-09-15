@@ -6,8 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Setter
 @Getter
@@ -16,7 +17,6 @@ import java.util.List;
 public class Playlist implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
@@ -25,5 +25,8 @@ public class Playlist implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "MusicaId")})
     private List<Music> musics = new ArrayList<>();
 
+    public Playlist(){
+        this.id = UUID.randomUUID().toString();
+    }
 
 }
