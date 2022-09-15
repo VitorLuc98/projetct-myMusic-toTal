@@ -34,8 +34,7 @@ public class MusicServiceImpl implements MusicService {
         log.info("Starting method of searching music by artist or song name, {}", MusicServiceImpl.class);
         if (Objects.isNull(name) || name.isEmpty()) {
             log.info("name is null or is empty");
-            throw new NameLenghtException("The name should have more than 2 characters");
-//            return findAll();
+            return findAll();
         }
 
         if (name.length() < 2) {
@@ -67,9 +66,9 @@ public class MusicServiceImpl implements MusicService {
         return  modelMapper.map(musicEntity.get(), MusicDto.class);
     }
 
-//    private List<MusicDto> findAll() {
-//        return repository.findAll().stream()
-//                .map(music -> modelMapper.map(music, MusicDto.class))
-//                .collect(Collectors.toList());
-//    }
+    private List<MusicDto> findAll() {
+        return repository.findAll().stream()
+                .map(music -> modelMapper.map(music, MusicDto.class))
+                .collect(Collectors.toList());
+    }
 }
