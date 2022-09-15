@@ -10,6 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.validation.Valid;
+import java.net.URI;
 
 @RestController
 @RequestMapping("api/users")
@@ -32,5 +36,20 @@ public class UserController {
         var user = service.findUserById(userId);
         log.info("Returning o user list, {}", UserController.class);
         return ResponseEntity.ok(user);
+    }
+
+    @ApiOperation(value = "Create a user")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successfully created a user"),
+            @ApiResponse(code = 401, message = "Do not have permission to access this resource"),
+            @ApiResponse(code = 500, message = "Unexpected error")
+    })
+    @PostMapping
+    public ResponseEntity<UserDto> saveUser(@RequestBody @Valid UserDto userDto){
+        log.info("saving the user, {}", UserController.class);
+        var user = service.saveUser(userDto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(userDto.getId()).toUri();
+        log.info("Returning the user already saved, {}", UserController.class);
+        return ResponseEntity.created(uri).body(user);
     }
 }
